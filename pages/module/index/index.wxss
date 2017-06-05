@@ -1,1 +1,18 @@
 /* pages/module/index/index.wxss */
+@import "../../assets/styles/pulic.wxss";
+.index{
+
+}
+.index .index-login-head{
+	padding:30rpx 20rpx;
+	display:flex;
+}
+.index-login-head .index-login-head-img{
+	width:130rpx;
+	height:13rpx;
+}
+.index-login-head-img image{
+	height:130rpx;
+	width:130rpx;
+	border-radius:50%;
+}

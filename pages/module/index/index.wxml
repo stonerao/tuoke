@@ -1,5 +1,66 @@
 <view class="index">
+  <!--头顶可关闭-->
+  <view class="index-login-head">
+    <view class="index-login-head-img">
+      <image src="../../assets/images/tx.jpg"></image>
+    </view>
+    <view class="index-login-info">
+      <view class="index-login-text">
+        <view class="index-login-info-name">亲爱的</view>
+        <view class="index-login-info-text">申请分销商即可分享赚佣金</view>
+      </view>
+      <navigator>立即申请</navigator>
+    </view>
+
+    <view class="over">×</view>
+  </view>
+  <!--信息-->
   <view class="index-head">
-    I is index
+    <!--bei头像-->
+    <view class="index-head-banner">
+      <image src="../../assets/images/01.jpg"></image>
+    </view>
+    <!--数据-->
+    <view class="index-infos">
+      <view class="index-infos-tx">
+        <image src="../../assets/images/header2.jpg"></image>
+      </view>
+      <view class="index-infos-items">
+
+        <view class="index-infos-item">
+          <view class="index-infos-head">
+
+          </view>
+          <view class="index-infos-text">
+            全部商品
+          </view>
+        </view>
+        <view class="index-infos-item">
+          <view class="index-infos-head">
+
+          </view>
+          <view class="index-infos-text">
+            上新商品
+          </view>
+        </view>
+        <view class="index-infos-item">
+          <view class="index-infos-head">
+
+          </view>
+          <view class="index-infos-text">
+            我的订单
+          </view>
+        </view>
+        <view class="index-infos-item">
+          <view class="index-infos-head">
+
+          </view>
+          <view class="index-infos-text">
+            会员签到
+          </view>
+        </view>
+
+      </view>
+    </view>
   </view>
 </view>

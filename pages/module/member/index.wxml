@@ -1,2 +1,54 @@
-<!--pages/module/member/index.wxml-->
-<text>pages/module/member/index.wxml</text>
+<view class="member">
+  <!--头部-->
+  <view class="member-head" style="background-image:url(../../assets/images/tt_bj.jpg)">
+    <!--头像-->
+    <view class="member-head-avatar">
+      <image src="../../assets/images/tx.jpg"></image>
+    </view>
+    <!--信息-->
+    <view class="member-head-info">
+      <view class="text">
+        积分:
+        <view class="member-head-check"><view class="three-block"></view>会员签到</view>
+      </view>
+    </view>
+  </view>
+  <!--点击查看订单-->
+  <view class="member-order-list">
+    <view class="member-order-url">
+      <view class="member-order-all">
+        全部订单
+        <text>(0)</text>
+      </view>
+      <view class="member-order-click">
+        <navigator url="" hover-class="none">点击查看 > </navigator>
+      </view>
+    </view>
+    <view class="member-static-items">
+      <view class="member-static-item" wx:for="{{static}}" wx:key="$index" wx:for-item="item" wx:for-index="$index">
+        <view class="member-static-num">
+          {{item.number}}
+        </view>
+        <view class="member-static-text">
+          {{item.name}}
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 选择列表 -->
+  <view class="member-list">
+    <view class="member-list-option" wx:for="{{check}}" wx:key="$index" wx:for-item="item" wx:for-index="$index">
+      <navigator hover-class="none">
+        <view class="member-list-image">
+          <image src="{{item.img}}"></image>
+        </view>
+        <view class="member-list-text">
+          <text>{{item.name}}</text>
+        </view>
+      </navigator>
+    </view>
+  </view>
+  <view class="member-quit">
+    <button>点击退出</button>
+  </view>
+</view>

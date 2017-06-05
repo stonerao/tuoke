@@ -1,13 +1,13 @@
 {
   "pages":[
     "pages/module/index/index",
-    "pages/module/diy/index",
+    "pages/module/member/index",
+    
     "pages/module/goods_list/index",
     "pages/module/goods_details/index",
     "pages/module/shopping_cart/index",
     "pages/module/oder_page/index",
     "pages/module/pay_good/index",
-    "pages/module/member/index",
     "pages/module/order_list/index",
     "pages/module/shopping_address/index", 
     "pages/module/address/index"
@@ -27,10 +27,6 @@
       {
         "pagePath": "pages/module/index/index",
         "text": "首页"
-      },
-      {
-        "pagePath": "pages/module/diy/index",
-        "text": "diy"
       },
       {
         "pagePath": "pages/module/member/index",
