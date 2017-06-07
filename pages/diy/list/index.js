@@ -1,4 +1,4 @@
-// pages/module/address/index.js
+// pages/diy/list/index.js
 Page({
 
   /**

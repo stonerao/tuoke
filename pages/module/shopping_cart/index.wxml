@@ -1,2 +1,58 @@
-<!--pages/module/shopping_cart/index.wxml-->
-<text>pages/module/shopping_cart/index.wxml</text>
+<!--购物车-->
+<view class="shop_cart">
+  <view class="shop_cart_title">
+    <view class="cart_title">我的购物车</view>
+    <view class="bule" bindtap="delect_set">
+      删除商品
+    </view>
+  </view>
+  <!--items-->
+  <view class="shop_main" >
+    <view class="shop_list">
+    <!--data-->
+      <view class="shop_items" wx:for="{{items}}" wx:for-index="$index" wx:for-item="item" wx:key="$index" data-id="{{$index}}">
+        <checkbox-group class="shop_item" bindchange="checkbox_items">
+          <!--checkbox-->
+          <view class="shop_item_check">
+            <checkbox value="{{item.name}}" checked="{{item.checked}}" value="{{val}}" class="chec"/>{{item.value}}
+          </view>
+          <view class="shop_item_img">
+            <image src="{{item.img}}"></image>
+          </view>
+          <view class="shop_item_title">
+            {{item.name}}
+          </view>
+          <view class="shop_item_nums">
+            <view class="shop_item_price">
+              ￥{{item.price}}
+            </view>
+            <view class="shop_item_num">
+              <text>数量</text>
+              <input value="1" />
+            </view>
+          </view>
+        </checkbox-group>
+      </view>
+    </view>
+  </view>
+  <!--footer-->
+  <view class="cart_footer">
+    <label class="cart_footer_check">
+      <checkbox value="value" checked="false" />全选
+    </label>
+    <view class="cart_footer_sub" id="cart_footer_sub">
+      <view class="cart_footer_nums">
+        <view class="cart_footer_price">
+        合计：￥0.02元 <text>0.02</text>
+        </view>
+        <view class="cart_footer_text">
+        <text>（共一件，不含运费）</text>
+        </view>
+      </view>
+      <!--结算-->
+      <view class="cart_footer_btn">
+        <button>去结算</button>
+      </view>
+    </view>
+  </view>
+</view>

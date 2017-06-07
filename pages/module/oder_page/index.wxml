@@ -1,2 +1,113 @@
-<!--pages/module/oder_page/index.wxml-->
-<text>pages/module/oder_page/index.wxml</text>
+<view class="oder">
+  <!--头-->
+  <view class="over_header">
+    <view class="over_title">
+      收货信息
+    </view>
+    <view class="oder_fill_adr" bindtap="alert_good">
+     
+        <text>填写收货地址</text>
+        <icon type="String" />
+      
+    </view>
+    <!--信息-->
+    <view class="oder_page_info">
+      <view class="oder_page_head">
+        <navigator url="" class="over_page_img">
+          <image src="../../assets/images/tx.jpg"></image>
+        </navigator>
+        <view class="oder_page_info oder_page">
+          <view class="oder_name">
+            我是shopping名字
+          </view>
+          <view class="oder_nums">
+            <view>数量：1</view>
+            <view class="flex2">原价：0.02</view>
+            <view class="oder_price">
+              <text>￥</text>0.02
+            </view>
+          </view>
+
+        </view>
+
+      </view>
+      <view class="over_allprice ">
+        商品总价：
+        <text>￥0.02</text>
+      </view>
+
+    </view>
+    <view class="oder_integral">
+      赠送积分
+      <text>0</text>积分
+    </view>
+    <view class="oder_submit">
+      <view class="oder_texts">
+        <view class="oder_texts_title">买家留言：</view>
+        <textarea placeholder="你想对店主说点什么" name="textarea" class="textarea" />
+      </view>
+      <button>提交订单</button>
+    </view>
+  </view>
+  <view class="city_alert" wx:if="{{is_alert}}">
+    <view class="city_list_box">
+
+      <view class="city_list">
+        <view class="city_list_name">收件人:</view>
+        <view class="city_list_inp">
+          <input placeholder="收件人" />
+        </view>
+      </view>
+      <view class="city_list">
+        <view class="city_list_name">手机号码:</view>
+        <view class="city_list_inp">
+          <input placeholder="手机号码" />
+        </view>
+      </view>
+      <!-- 选择地区 -->
+      <view class="city_list">
+        <view class="city_list_name">选择地区:</view>
+        <view class="city_list_select">
+          <!--<view bindchange="bindPickerChange" value="{{index}}" range="{{array}}">{{array[index]}}</view>-->
+          <!-- 省市区 -->
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" class="flex33">
+            <view>
+              {{array[index]}}
+            </view>
+          </picker>
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" class="flex33">
+            <view>
+              {{array[index]}}
+            </view>
+          </picker>
+          <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" class="flex33">
+            <view>
+              {{array[index]}}
+            </view>
+          </picker>
+        </view>
+      </view>
+
+
+      <view class="city_list">
+        <view class="city_list_name">详细地址:</view>
+        <view class="city_list_inp">
+          <input placeholder="手机号码" />
+        </view>
+      </view>
+
+
+      <view class="city_list">
+        <view class="city_list_name">邮政编码:</view>
+        <view class="city_list_inp">
+          <input placeholder="手机号码" />
+        </view>
+      </view>
+
+    </view>
+    <view class="city_btns">
+    	<button>确定</button>
+    	<button bindtap="alert_good">取消</button>
+    </view>
+  </view>
+</view>

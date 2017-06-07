@@ -1,39 +1,42 @@
-// pages/module/oder_page/index.js
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    array: ['美国', '中国', '巴西', '日本'],
+    index: 1,
+    is_alert:false,//弹出框
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-  
+  onLoad: function (option) {
+    console.log(option)
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-  
+  onReady: function (options) {
+   
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-  
+  onShow: function (options) {
+    console.log(options)
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-  
+  onHide: function (options) {
+    console.log(options)
   },
 
   /**
@@ -62,5 +65,16 @@ Page({
    */
   onShareAppMessage: function () {
   
-  }
+  },
+  bindPickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      index: e.detail.value
+    })
+  },
+  alert_good(){
+    this.setData({
+      is_alert: !this.data.is_alert
+    })
+  },
 })

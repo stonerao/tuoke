@@ -1,1 +1,131 @@
-/* pages/module/oder_page/index.wxss */
+@import "../../assets/styles/pulic.wxss";
+.oder{
+	position:relative;
+}
+.over_header{
+	position:relative;
+}
+.over_header .over_title{
+	height: 64rpx;
+    line-height: 64rpx;
+    color: rgb(51, 51, 51);
+    font-size: 28rpx;
+    padding-left: 20rpx;
+    position:relative;
+}
+.over_header .oder_fill_adr{
+	border: rgb(233, 233, 233) solid 2rpx;
+    border-width: 2rpx 0;
+    min-height: 98rpx;
+    background: rgb(255, 255, 255);
+    padding-left: 20rpx;
+    position: relative;
+}
+.over_header .oder_fill_adr text{
+	display: inline-block;
+    height: 98rpx;
+    line-height: 98rpx;
+    font-size: 32rpx;
+}
+.over_header .oder_fill_adr icon{
+    height: 98rpx;
+    line-height: 98rpx;
+    font-size: 32rpx;
+    float:right;
+}
+.oder_page_info{
+	background:#fff;
+}
+.oder_page_head{
+	display:flex;
+	position:relative;
+	padding-top:10rpx;
+}
+.oder_page_head .over_page_img{
+	margin-left: 20px;
+    width: 160rpx;
+    height: 160rpx;
+    overflow: hidden;
+}
+.oder_page_head .over_page_img image{
+	width: 160rpx;
+    height: 160rpx;
+}
+.oder_page_head .oder_integral{
+	line-height:200rpx;
+}
+.oder_page_head .oder_page{
+	margin-left:10rpx;
+
+}
+.oder_page_head .oder_page_info .oder_name{
+	height:64rpx;
+	line-height: 32rpx;
+	margin-bottom:10rpx;
+}
+.oder_page_head .oder_page_info .oder_nums{
+	display:flex;
+	font-size:26rpx;
+	line-height:40rpx;
+}
+.oder_page_head .oder_page_info .oder_price{
+	float:right;
+	display: inline-block;
+    color: rgb(255, 102, 0);
+    font-size: 28rpx;
+    font-weight: 400;
+    padding-right: 40rpx;
+}
+.oder_page_head .oder_page_info .oder_price text{
+    color: rgb(255, 102, 0);
+}
+
+ .over_allprice{
+        height: 60rpx;
+    line-height: 60rpx;
+    text-align: right;
+    color: rgb(51, 51, 51);
+    padding-right: 40rpx;
+}
+.oder_integral{
+	margin-top: 20rpx;
+    border: rgb(232, 232, 232) solid 1px;
+    border-width: 1px 0;
+    background: rgb(255, 255, 255);
+    height: 104rpx;
+    overflow: hidden;
+    line-height: 104rpx;
+    padding-left:20rpx;
+    font-size:28rpx;
+    color:rgb(138, 137, 137);
+
+}
+.oder_integral text{
+	  color:rgb(138, 137, 137);
+}
+.oder_submit{
+	padding:20rpx;
+}
+.oder_submit .oder_texts{
+	padding: 20rpx 36rpx;
+    line-height: 40rpx;
+    font-size-size:26rpx;
+}
+.oder_submit .textarea{
+	margin-top:20rpx;
+	background:#fff;
+
+}
+.oder_submit button{
+	margin-top:20rpx;
+	    width: 100%;
+    background: rgb(241, 90, 12);
+    height: 80rpx;
+    line-height: 80rpx;
+    text-align: center;
+    border-radius: 8rpx;
+    color: rgb(255, 255, 255);
+    font-size: 28rpx;
+    font-weight: 700;
+    border: 0;
+}

@@ -1,76 +1,11 @@
-/* pages/module/goods_list/index.wxss */
-@import "../../assets/styles/pulic.wxss";
-.goods_search{
-	padding:10rpx 3.124%;    
-	background: rgb(243, 243, 243);
+.template>.box_view{
+  background:#fff;
+  margin-top: 15rpx;
+  padding:15rpx 0;
 }
-.goods_search .goods_search_box{
-	margin-bottom: 0;
-    background: rgb(255, 255, 255);
-    overflow:hidden;
-}
-.goods_search_inp{
-	padding-left: 5%;
-	font-size: 24rpx;
-	border: 0;
-	background: 0 0;
-	width: 80%;
-    height: 72rpx;
-    float:left;
-}
-.goods_search_btn{
-	float: right;
-    width: 40rpx;
-    height: 36rpx;
-    background:cover;
-    margin:20rpx 10rpx 0 0;
-}
-.icon-search{
-	width: 40rpx;
-    height: 36rpx;
-}
-.goods_list_title{
-	background:#fff;
-}
-.goods_list_items{
-	display:flex;
-	width:100%;
-	line-height:32rpx;
-	height:32rpx;
-	padding:26rpx 0;
-	border: rgb(216, 216, 216) solid 1rpx;
-	border-width: 1rpx 0;
-}
-
-.goods_list_items .goods_list_item{
-	text-align:center;
-	flex:1;
-	width:20%;
-}
-.active{
-	color:rgb(255, 102, 0);
-}
-.goods_sort{
-	padding-right:20rpx;
-	background-size:16rpx 24rpx;
-	background-repeat:no-repeat;
-	background-position:right;
-}
-.shop_box_check{
-	width:32rpx;
-	height:32rpx;
-}
-.goods_shopping{
-	    width: 100%;
-    overflow: hidden;
-    padding: 10px 0 0;
-    background: rgb(249, 249, 249);
-}
-.shop_items{
-	
-}
+/*商品列表1*/
 .shopping_list_style1{
-
+  
 }
 .shopping_list_style1 .shop_item{
 	display: inline-block;
@@ -113,6 +48,8 @@
 	overflow: hidden;
   display:flex;
 }
+/*商品列表2*/
+
 .shop_item .shop_item_price view:first-child{
 	color: rgb(255, 102, 0);
     font-size: 28rpx;
@@ -185,4 +122,10 @@
     background: rgb(255, 102, 0);
     padding: 0 4rpx;
     font-size:24rpx;
+}
+
+/*3 swiper*/
+.tp_swiper1{
+  width:100%;
+  height:200rpx;
 }

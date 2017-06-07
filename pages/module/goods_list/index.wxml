@@ -1,2 +1,100 @@
-<!--pages/module/goods_list/index.wxml-->
-<text>pages/module/goods_list/index.wxml</text>
+<import src="../../components/goods_alert.wxml"/>
+<view class="goodsList background">
+  <!--搜索-->
+  <view class="goods_search">
+    <view class="goods_search_box">
+      <input placeholder="商品搜索：请输入商品关键字" class="goods_search_inp" />
+      <view class="goods_search_btn" bindtap="search_btn">
+        <image src="../../assets/images/hui3.png" class="icon-search"></image>
+      </view>
+    </view>
+  </view>
+  <view class="goods_list_title">
+    <view class="goods_list_items">
+      <view class="goods_list_item ">
+        <text class="active">默认</text>
+      </view>
+      <view class="goods_list_item">
+        <text class="goods_sort" style="background-image:url(../../assets/images/list1.png)">价格</text>
+      </view>
+      <view class="goods_list_item">
+        <text class="goods_sort" style="background-image:url(../../assets/images/list1.png)">销量</text>
+      </view>
+      <view class="goods_list_item">
+        <text class="goods_sort" style="background-image:url(../../assets/images/list1.png)">人气</text>
+      </view>
+      <view class="goods_list_item" bindtap="shopping_style">
+        <image src="../../assets/images/list3.jpg" class="shop_box_check"></image>
+      </view>
+    </view>
+  </view>
+  <view class="goods_shopping">
+    <!--shopping_list_style1 样式1 shopping_list_style2 样式2-->
+    <view class="{{is_style?'shopping_list_style1':'shopping_list_style2'}} shop_items">
+      <view class="shop_item" wx:for="{{items}}" wx:for-index="$index" wx:key="$index" wx:for-item="item" data-id="{{item_id}}">
+        <view class="shop_item_image">
+          <image src="{{item.pic_url}}"></image>
+        </view>
+        <view class="shop_item_box">
+          <view class="shop_item_title">{{item.title}}</view>
+          <view class="shop_item_price">
+            <view>￥{{item.price}}</view>
+            <view>￥{{item.original_price}}</view>
+          </view>
+          <view class="shop_item_labe" wx:if="{{is_style===false}}">
+            <text>11</text>
+          </view>
+
+        </view>
+
+        <view class="icon-cart 1" style="background-image:url(../../assets/images/showcase2x-1416814739063.png)" bindtap="cartTap">
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="goods_alert" wx:if="{{slect_alert}}">
+    <view class="goods_select" animation="{{animationData}}">
+      <view class="goods_select_head">
+        <view class="goods_select_img">
+          <image src="../../assets/images/tx.jpg"></image>
+        </view>
+        <view class="goods_select_title">
+          <view>测试商品</view>
+          <view>
+            <text>￥</text>50.00</view>
+        </view>
+        <view bindtap="select_over" class="goods_select_over" style="background-image:url(../../assets/images/showcase2x-1416814739063.png)">
+        </view>
+      </view>
+      <view class="goods_select_box">
+        <view class="goods_select_class">
+          <view class="slect_class" wx:for="[0]">
+            <view class="slect_class_title">
+              颜色
+            </view>
+            <view class="slect_class_option">
+              <view class="slecct_option_item " wx:for="[2]" data-items="1" bindtap="select_class">1</view>
+            </view>
+          </view>
+          <view class="slect_num">
+            <view class="slect_text">数量</view>
+            <view class="slect_num_check">
+              <view class="slect_text">剩余：25</view>
+              <view class="slect_num_btns">
+                <view class="btns" bindtap="cartValNum" data-static="0">-</view>
+                <input class="text_num" type="number" value="{{cartVal}}" />
+                <view class="btns" bindtap="cartValNum" data-static="1">+</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="goods_list_sub">
+        <view class="sun_btn btn-orange-dark">立即购买</view>
+        <view class="sun_btn btn-orange-cart">加入购物车</view>
+      </view>
+    </view>
+  </view>
+
+</view>

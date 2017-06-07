@@ -1,1 +1,90 @@
 /* pages/module/order_list/index.wxss */
+@import "../../assets/styles/pulic.wxss";
+.list_index_color{
+	color:#f15c0b;
+}
+.list_scroll{
+	display: flex;
+	overflow-x:auto;
+	background:#fff;
+	height: 84rpx;
+}
+.list_head_item{
+	min-width:140rpx;
+	line-height: 80rpx;
+	height:80rpx;
+	text-align:center;
+}
+.list_head_item.active{
+	color: #ef5b12;
+	border-bottom:4rpx solid #ef5b12;
+}
+.list_main{
+
+}
+.list_items{
+	background:#fff;
+	margin-top:20rpx;
+}  
+.list_items .list_item_title{
+	height:66rpx;
+	line-height:66rpx;
+	padding:0 20rpx;
+}
+.list_items .list_item_box{
+	padding:12rpx 20rpx;
+	display:flex;
+}
+.list_items .list_item_box .list_item_img{
+	width:150rpx;
+	height:150rpx;
+	margin-right:10rpx;
+}
+.list_items .list_item_box .list_item_img image{
+	width:150rpx;
+	height:150rpx;
+	border-radius:8rpx;
+}
+.list_items .list_item_box .list_item_info .list_item_name {
+	height:110rpx;
+}
+.list_items .list_item_box .list_item_info .list_item_nums{
+	 display:flex;
+	 justify-content: space-between;
+}
+.list_items  .list_item_price{
+	text-align:right;
+	border-bottom: 1rpx solid #d9d9d9;
+	border-top: 1rpx solid #d9d9d9;
+	padding:14rpx;
+}
+.list_items  .list_item_num{
+	border-bottom: 1rpx solid #d9d9d9;
+	padding:15rpx;
+	color:#999;
+}
+.list_item_btns{
+	display:flex;
+	justify-content:flex-end;
+	padding:15rpx 30rpx;
+}
+.list_item_btns view{
+	width:148rpx;
+	height:58rpx;
+	line-height:58rpx;
+	padding:0;
+	margin:0;
+	text-align:center;
+		border-radius:5rpx;
+}
+.list_item_btns .list_item_quit{
+	color:#8e8e8e;
+	border:1rpx solid #8e8e8e;
+	margin-right:35rpx;
+
+}
+.list_item_btns .list_item_sub{
+	color:#fff;
+	background:#f15c0b;
+	border:1rpx solid #f15c0b;
+}

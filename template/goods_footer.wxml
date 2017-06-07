@@ -1,0 +1,7 @@
+<template name="foot">
+	<view id="goods_footer">
+	  <view class="goods_footer_sao" style="background-image:url({{saoImg}})"></view>
+	  <view class="goods_footer_sub btn btn-white">立即购买</view>
+	  <view class="goods_footer_cart btn btn-orange-dark">加入购物车</view>
+  	</view>
+</template>

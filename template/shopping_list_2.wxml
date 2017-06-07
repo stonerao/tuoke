@@ -1,0 +1,18 @@
+<template name="tp_shop_list_2">
+  <view class="shopping_list_style2 shop_items box_view">
+    <view class="shop_item" wx:for="{{datas}}">
+      <navigator url="">
+        <view class="shop_item_image">
+          <image src=""></image>
+        </view>
+        <view class="shop_item_box">
+          <view class="shop_item_title">123</view>
+          <view class="shop_item_price">
+            <view>￥{{item.price}}</view>
+            <view>￥123</view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+</template>

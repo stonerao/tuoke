@@ -1,6 +1,8 @@
+<import src="../../../template/shopping_list_1.wxml"/>
+<import src="../../../template/shopping_list_2.wxml"/>
 <view class="index">
   <!--头顶可关闭-->
-  <view class="index-login-head">
+  <view class="index-login-head bai" wx:if="{{index_head}}">
     <view class="index-login-head-img">
       <image src="../../assets/images/tx.jpg"></image>
     </view>
@@ -9,58 +11,133 @@
         <view class="index-login-info-name">亲爱的</view>
         <view class="index-login-info-text">申请分销商即可分享赚佣金</view>
       </view>
-      <navigator>立即申请</navigator>
+      <navigator class="index-login-go">立即申请</navigator>
     </view>
 
-    <view class="over">×</view>
+    <view class="over" bindtap="over_head">×</view>
   </view>
-  <!--信息-->
-  <view class="index-head">
-    <!--bei头像-->
-    <view class="index-head-banner">
-      <image src="../../assets/images/01.jpg"></image>
-    </view>
-    <!--数据-->
-    <view class="index-infos">
-      <view class="index-infos-tx">
-        <image src="../../assets/images/header2.jpg"></image>
+  <view class="index-box bai">
+    <!--信息-->
+    <view class="index-head">
+      <!--bei头像-->
+      <view class="index-head-banner">
+        <image src="../../assets/images/01.jpg"></image>
       </view>
-      <view class="index-infos-items">
-
-        <view class="index-infos-item">
-          <view class="index-infos-head">
-
-          </view>
-          <view class="index-infos-text">
-            全部商品
-          </view>
+      <!--数据-->
+      <view class="index-infos">
+        <view class="index-infos-tx">
+          <image src="../../assets/images/header2.jpg"></image>
+          <view class="index-infos-txtext">店铺首页</view>
         </view>
-        <view class="index-infos-item">
-          <view class="index-infos-head">
+        <view class="index-infos-items">
+          <view class="index-infos-item">
+            <view class="index-infos-head">
+              14
+            </view>
+            <view class="index-infos-text">
+              <navigator>全部商品</navigator>
+            </view>
+          </view>
+          <view class="index-infos-item">
+            <view class="index-infos-head">
+              14
+            </view>
+            <view class="index-infos-text">
+              <navigator>上新商品</navigator>
+            </view>
+          </view>
+          <view class="index-infos-item">
+            <view class="index-infos-head">
+              <!-- <image src=""></image> -->
+              --
+            </view>
+            <view class="index-infos-text">
+              <navigator> 我的订单</navigator>
+            </view>
+          </view>
+          <view class="index-infos-item">
+            <view class="index-infos-head">
+              <!-- <image src=""></image> -->
+              --
+            </view>
+            <view class="index-infos-text">
+              <navigator>会员签到</navigator>
+            </view>
+          </view>
 
-          </view>
-          <view class="index-infos-text">
-            上新商品
-          </view>
         </view>
-        <view class="index-infos-item">
-          <view class="index-infos-head">
-
-          </view>
-          <view class="index-infos-text">
-            我的订单
-          </view>
-        </view>
-        <view class="index-infos-item">
-          <view class="index-infos-head">
-
-          </view>
-          <view class="index-infos-text">
-            会员签到
-          </view>
-        </view>
-
       </view>
     </view>
+  </view>
+
+  <view class="template">
+    <!--模板一-->
+    <!--<view class="tp_shop">
+      <view class="tp_shop_box">
+        <view class="tp_shop_items">
+          <view class="tp_shop_item" wx:for="{{shop1.content.goodslist}}" data-id="{{item.item_id}}">
+            <navigator url="">
+              <view class="tp_shop_img">
+                <image src="http://wfx.dev.kh888.cn/{{item.file_path}}"></image>
+              </view>
+              <view class="tp_shop_name">
+                1
+              </view>
+              <view class="tp_shop_price">
+                <text>￥564</text>
+                <text>￥99.00</text>
+              </view>
+            </navigator>
+          </view>
+        </view>
+      </view>
+    </view>-->
+    <!--1-->
+    <!--<view class="shopping_list_style1 shop_items box_view">
+      <view class="shop_item" wx:for="{{datas}}">
+        <navigator url="">
+          <view class="shop_item_image">
+            <image src=""></image>
+          </view>
+          <view class="shop_item_box">
+            <view class="shop_item_title">123</view>
+            <view class="shop_item_price">
+              <view>￥{{item.price}}</view>
+              <view>￥123</view>
+            </view>
+          </view>
+        </navigator>
+      </view>
+    </view>-->
+    <template is="tp_shop_list_1" data="{{datas}}"/>
+    <!--2-->
+    <!--<view class="shopping_list_style2 shop_items box_view">
+      <view class="shop_item" wx:for="{{datas}}">
+        <navigator url="">
+          <view class="shop_item_image">
+            <image src=""></image>
+          </view>
+          <view class="shop_item_box">
+            <view class="shop_item_title">123</view>
+            <view class="shop_item_price">
+              <view>￥{{item.price}}</view>
+              <view>￥123</view>
+            </view>
+          </view>
+        </navigator>
+      </view>
+    </view>-->
+     <template is="tp_shop_list_2" data="{{datas}}"/>
+    <!--3 swiper-->
+    <swiper indicator-dots="true" autoplay="true" >
+      <block wx:for="{{datas}}">
+        <swiper-item>
+          <image src="../../assets/images/01.jpg" class="tp_swiper1"/>
+        </swiper-item>
+      </block>
+    </swiper>
+
+
+
   </view>
 </view>

@@ -1,2 +1,63 @@
-<!--pages/module/goods_details/index.wxml-->
-<text>pages/module/goods_details/index.wxml</text>
+<import src="../../../template/goods_footer.wxml" />
+
+<view class="detail goods">
+  <!--banner-->
+  <view class="detail_banner">
+    <swiper indicator-dots="true" current="true">
+      <block wx:for="{{2}}">
+        <swiper-item class="banner_item">
+          1
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <!--detaile-->
+  <view class="detail_main">
+    <view class="detaile_main_content">
+      <view class="detail_title">
+        大的撒旦
+      </view>
+      <view class="detail_price">
+        <view class="detail_price_num">
+          <text>￥</text>54.00
+        </view>
+        <view class="detail_souc" style="background-image:url(../../assets/images/add_wish@2x.png)">
+          搜藏
+        </view>
+      </view>
+       <view class="detail_list">
+      <view class="detail_list_items">
+        <view class="detail_list_item">
+          <view class="detail_name">计量单位：</view>
+          <view class="detail_content"> 23</view>
+        </view>
+        <view class="detail_list_item">
+          <view class="detail_name">免运费</view>
+          <view class="detail_content"> 12</view>
+        </view>
+      </view>
+    </view>
+    </view>
+   
+    <view class="detail_selct">
+      <view class="detail_selct_items">
+          选择：
+        <text>颜色</text>
+        <text class=""></text>
+      </view>
+      
+    </view>
+    <view class="detail_text">
+      <view class="detail_text_title">
+        <view class="active">图文详情</view>
+        <view>商品评价</view>
+      </view>
+      <view class="text_content">
+        <!-- 内容 -->
+      </view>
+    </view>
+
+  </view>
+
+</view>
+<template is="foot" data="{{saoImg:'../../assets/images/guanzhu.png'}}"/>

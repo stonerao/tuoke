@@ -1,2 +1,56 @@
-<!--pages/module/order_list/index.wxml-->
-<text>pages/module/order_list/index.wxml</text>
+<!--订单列表-->
+<view class="list">
+  <view class="list_head">
+    <view scroll-x style="width: 100%" class="list_scroll">
+      <view class="list_head_item">
+        全部
+      </view>
+      <view class="list_head_item">
+        待收货
+      </view>
+      <view class="list_head_item active">
+        待发货
+      </view>
+      <view class="list_head_item">
+        待收款
+      </view>
+      <view class="list_head_item">
+        待评价
+      </view>
+    </view>
+  </view>
+  <view class="list_main">
+    <view class="list_items">
+      <view class="list_item">
+        <view class="list_item_title">
+          订单号：2312313
+        </view>
+        <view class="list_item_infos">
+          <view class="list_item_box">
+            <view class="list_item_img">
+              <image src="../../assets/images/tx.jpg"></image>
+            </view>
+            <view class="list_item_info">
+              <view class="list_item_name">我是商品介绍啊。我是商品介绍啊啊啊啊</view>
+              <view class="list_item_nums">
+                <text class="list_index_color">￥79.00</text>
+                <text>x5</text>
+              </view>
+            </view>
+          </view>
+          <view class="list_item_price">
+            共意见商品 合计：
+            <text class="list_index_color">￥79.00</text>（含运费￥0.00）
+          </view>
+          <view class="list_item_num text-center">
+            共查看全部5件商品
+          </view>
+          <view class="list_item_btns">
+            <view class="list_item_quit">取消订单</view>
+            <view class="list_item_sub">立即付款</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

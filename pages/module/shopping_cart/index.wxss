@@ -1,1 +1,119 @@
-/* pages/module/shopping_cart/index.wxss */
+@import "../../assets/styles/pulic.wxss";
+.shop_cart{
+	background-color:#f3f3f3;
+	font-size:28rpx;
+	padding-bottom:84rpx;
+}
+ 
+.shop_cart_title{
+	display:flex;
+	justify-content:space-between;
+	padding:10rpx 20rpx;
+	background:#fff;z
+}
+.shop_main{
+	background:#fff;
+	border-top:1px solid rgb(221, 221, 221);
+	border-bottom:1px solid rgb(221, 221, 221);
+}
+.shop_main .shop_item{
+	display:flex;
+	padding:20rpx;
+	position:relative;
+	border-bottom:rgb(237, 237, 237) solid 1px;
+}
+.shop_main .shop_item .shop_item_check {
+	position:relative;
+	top:30rpx;
+	margin-right:10rpx;
+}
+.shop_main .shop_item .shop_item_img {
+	width:120rpx;
+	height:120rpx;
+	margin-right:10rpx;
+}
+.shop_main .shop_item .shop_item_img image{
+	width:120rpx;
+	height:120rpx;
+	border-radius:8rpx;
+}
+.shop_main .shop_item .shop_item_title{
+	min-width:300rpx;
+}
+.shop_main .shop_item .shop_item_nums{
+	text-align:right;
+	width: 160rpx;
+	position:absolute;
+	right:20rpx;
+}
+.shop_main .shop_item .shop_item_num{
+	line-height:1.4rem; 
+	margin-top:10rpx;
+}
+.shop_main .shop_item .shop_item_num text{
+	line-height:1.4rem; 
+	font-size:24rpx;
+	margin-right:10rpx;
+}
+.shop_main .shop_item .shop_item_num input{
+	border: rgb(217, 212, 212) solid 1px;
+    background: rgb(243, 243, 243);
+    width: 70rpx;
+    text-align: center;
+    overflow: hidden;
+    float:right;
+    padding:0;
+    margin:0;
+}
+.cart_footer{
+	background:#fff;
+	position:fixed;
+	bottom:0;
+	height:84rpx;
+	display:flex;
+	width:96%;
+	justify-content: space-between;
+	padding:0 2%;
+	border: rgb(237, 237, 237) solid 1px;
+    border-width: 1px 0;
+}
+.cart_footer_check{
+	display:flex;
+	line-height:84rpx;
+	
+}
+.cart_footer_sub{
+	display:flex;
+	font-size:24rpx;
+	 
+}
+.cart_footer_sub .cart_footer_price{
+	    color: rgb(255, 102, 0);
+    font-size: 26rpx;
+    line-height: 36rpx;
+}
+.cart_footer_sub .cart_footer_price text{
+	margin-left: 10rpx;
+    font-size: 26rpx;
+    font-weight: 400;
+    color: rgb(153, 153, 153);
+    text-decoration: line-through;
+}
+.cart_footer_sub .cart_footer_text text{
+	    color: rgb(144, 144, 144);
+    font-size: 12px;
+    line-height: 16px;
+}
+.cart_footer_sub .cart_footer_btn button{
+	float: left;
+    display: inline-block;
+    height: 60rpx;
+    line-height: 60rpx;
+    padding: 0 20rpx;
+    background: rgb(241, 90, 12);
+    font-size: 28rpx;
+    color: rgb(255, 255, 255);
+    border-radius: 6rpx;
+    margin-left: 20rpx;
+    margin-top: 12rpx;
+}

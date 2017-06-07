@@ -1,1 +1,123 @@
 /* pages/module/goods_details/index.wxss */
+@import "../../assets/styles/pulic.wxss";
+.detail{
+	background-color:#f3f3f3;
+}
+.detail_banner{
+	width:100%;
+	
+	background:#eee;
+}
+.banner_item image{
+	height:375rpx;
+	width:100%;
+}
+.detaile_main_content{
+	padding:16rpx 0 12rpx;
+	overflow: hidden;
+    border-top: 1px solid rgb(242, 242, 242);
+    border-bottom: 1px solid rgb(242, 242, 242);
+    background-color: rgb(255, 255, 255);
+    display: block;
+}
+.detaile_main_content .detail_title{
+	font-weight: normal;
+    margin: 0;
+    padding: 0 20rpx;
+    font-size: 32rpx;
+    line-height: 44rpx;
+    text-align: left;
+}
+.detaile_main_content .detail_price{
+	padding: 10rpx 20rpx 4rpx;
+    text-align: left;
+    position: relative;
+}
+.detaile_main_content .detail_price .detail_price_num{
+	color: rgb(255, 102, 0);
+    display: inline-block;
+    font-size: 40rpx;
+    font-weight: bold;
+}
+.detaile_main_content .detail_price .detail_price_num text{
+	color: rgb(255, 102, 0);
+    display: inline-block;
+    font-size: 28rpx;
+    position:relative;
+    top:-3px;
+    margin-right:10rpx;
+}
+.detaile_main_content .detail_souc{
+	background-repeat:no-repeat;
+	background-position:8rpx -50rpx;
+	background-size:42rpx 138rpx;
+	line-height: 32rpx;
+	padding: 8rpx 8rpx 8rpx 52rpx;
+    color: rgb(255, 51, 0);
+    border:1px solid rgb(255, 51, 0);
+    margin: 0;
+    text-align: center;
+    display:inline-block;
+    float: right;
+    font-size:24rpx; 
+    border-radius: 6rpx;
+}
+.detail_list{
+	background:#fff;
+	margin-bottom: 10rpx;
+    line-height: 40rpx;
+    font-size: 28rpx;
+    border-top:1px solid rgb(240, 240, 240);
+    margin-top:10rpx;
+}
+.detail_list .detail_list_items{
+
+}
+.detail_list .detail_list_items .detail_list_item{
+	padding: 2rpx 20rpx;
+	width:100%;
+	margin: 16rpx 0;
+	font-size:28rpx;
+}
+.detail_list .detail_list_items .detail_name{
+	float: left;
+    color: rgb(153, 153, 153);
+    margin-right:20rpx;
+	font-size:28rpx;
+}
+.detail_selct{
+	background:#fff;
+	font-size:26rpx;
+	padding-left: 20rpx;
+    padding-right: 56rpx;
+    margin-top:10rpx;
+}
+.detail_selct .detail_selct_items{
+	height: 70rpx;
+    line-height: 70rpx;
+    background: rgb(255, 255, 255);
+    border-top: 0;
+    position: relative;
+}
+.detail_text{
+
+}
+.detail_text_title{
+	background:#fff;
+	display:flex;
+}
+.detail_text_title view{
+	flex:1;
+	text-align: center;
+	height: 70rpx;
+	line-height: 70rpx;
+	border-bottom: 1px solid rgb(229, 229, 229);
+	font-size:24rpx;
+}
+.text_content{
+	padding:20rpx;
+}
+.text_content image{
+	max-width:100%;
+	
+}
