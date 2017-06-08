@@ -32,8 +32,8 @@ Page({
       order: ``, //up:价格从大到小排序，down:价格从小到大排序，sales_volume_up:销量从大到小排序，sales_volume_down:销量从小到大排序，pv_up:人气从大到小排序，pv_down:人气从小到大排序，
       p: 1,//分页
     },
-    addCartData:{},//购物车规格
-
+    addCartData: {},//购物车规格
+    thisArr:[],
   },
 
   /**
@@ -164,7 +164,7 @@ Page({
     })
   },
   cartTap(e) {
-    // 购物车
+    // 点击购物车按钮
     // ajax 
     var _this = this;
     let goodsId = e.target.dataset.goods_id;
@@ -179,7 +179,7 @@ Page({
       success: function (res) {
         // 更新数据 
         _this.setData({
-          addCartData:res.data
+          addCartData: res.data
         })
         console.log(res.data)
       }
@@ -312,7 +312,7 @@ Page({
     // 列表数据
     wx.request({
       url: util.goods_list, // 商品列表
-      data: this.data.allData, 
+      data: this.data.allData,
       header: {
         'content-type': 'application/json'
       },
@@ -330,7 +330,7 @@ Page({
     // 搜索框input事件
     this.data.allData.title = option.detail.value
   },
-  add_carts(option){
+  add_carts(option) {
     //添加到购物车列表
     // ajax请求
     wx.showLoading({
@@ -339,37 +339,36 @@ Page({
     let _this = this;
     // 列表数据
     wx.request({
-      method:"POST",
+      method: "POST",
       url: util.add_cart_sub, // 添加到购物车去
       data: {
-        goods_id:`33`,
+        goods_id: `33`,
         id: `33`,//true 商品id
         num: _this.data.cartVal,//true 
-        sku_id:`63`,//false
-        t:`1`//false
+        sku_id: `63`,//false
+        t: `1`//false
       },
       header: {
-        'content-type': 'applicatiozn/json',
+        "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function (res) {
         // 关闭加载模态框
         wx.hideLoading();
         // 更新数据 
-        console.log()
-        if (res.data.status==0){
+        if (res.data.status == 0) {
           wx.showToast({
             title: res.data.msg,
             duration: 500
           })
         }
         _this.setData({
-          
+
         })
-        
+
       }
     })
   },
-  go_shop(){
+  go_shop() {
     //立即购买
     // ajax请求
     let _this = this;
@@ -388,7 +387,7 @@ Page({
         'content-type': 'applicatiozn/json',
       },
       success: function (res) {
-        
+
         if (res.data.status == 0) {
           wx.showToast({
             title: res.data.msg,
@@ -401,5 +400,48 @@ Page({
 
       }
     })
+  },
+  selectOption(e) {
+    var obj = e.currentTarget.dataset;//当前选择当前的数据
+    var thisData = this.data.addCartData.data.list;//所有数据列表
+    var nums = this.data.addCartData.data.tree.length;//多少组
+    var index = parseInt(obj.index);
+    this.data.thisArr[index]=obj.id;
+    var thisArr = this.data.thisArr;     
+    // dataArr[index] = obj.id;
+    // 如果选择的个数不全，不惊醒
+    if (nums != thisArr.length){return};
+    // 如果不选完
+    for (let i = 0; i < thisArr.length;i++){
+      if (thisArr[i] == '' || thisArr[i]==undefined){
+        return
+      }
+    }
+    // for (var key in thisData) { 
+    //   console.log(thisData[key])
+    //   if()
+    //   for(var jey in thisData[key]){
+    //     // console.log(key)
+    //     if(thisData[key][`s${key}`]==thisArr[key]){console.log(true)}
+    //     // console.log(thisData[key][`s${key}`],thisArr[key])
+    //   }
+    // } 
+    for(var key in thisArr){ 
+      for(var s in thisData){
+        var num = parseInt(key)+1
+        // console.log(thisArr[key],thisData[s][`s${num}`],`s${num}`)
+        if(thisArr[key]==thisData[s][`s${num}`]){
+            console.log(thisData[s],thisArr);
+            var str = thisData[s][`s${num}`];
+            for(var n in thisData[s]){
+              // if(thisData[s][`s${num}`])
+              console.log(thisData[s])
+            }
+            
+            return
+          // console.log(thisData[s])
+        }
+      }
+    }
   }
 })

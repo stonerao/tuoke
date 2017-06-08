@@ -72,12 +72,12 @@
       </view>
       <view class="goods_select_box">
         <view class="goods_select_class">
-          <view class="slect_class" wx:for="[0]">
+          <view class="slect_class" wx:for="{{addCartData.data.tree}}" wx:for-index="$index" wx:for-item="items" wx:key="$index">
             <view class="slect_class_title">
-              颜色
+              {{items.k}}
             </view>
             <view class="slect_class_option">
-              <view class="slecct_option_item " wx:for="[2]" data-items="1" bindtap="select_class">1</view>
+              <view class="slecct_option_item " wx:for="{{items.v}}" wx:for-item="item" wx:for-index="$num"  wx:key="$num"  data-index="{{$index}}" data-id="{{item.id}}" bindtap="select_class" bindtap="selectOption">{{item.name}}</view>
             </view>
           </view>
           <view class="slect_num">
