@@ -48,8 +48,8 @@
           </view>
           <view class="index-infos-item">
             <view class="index-infos-head">
-              <!-- <image src=""></image> -->
-              --
+               <image src="../../assets/images/icon-member-0.png"></image> 
+               
             </view>
             <view class="index-infos-text">
               <navigator> 我的订单</navigator>
@@ -57,8 +57,8 @@
           </view>
           <view class="index-infos-item">
             <view class="index-infos-head">
-              <!-- <image src=""></image> -->
-              --
+               <image src="../../assets/images/icon-member-0.png"></image> 
+              
             </view>
             <view class="index-infos-text">
               <navigator>会员签到</navigator>

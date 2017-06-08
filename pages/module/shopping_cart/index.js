@@ -19,7 +19,20 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    wx.request({
+      url: 'http://wfx.dev.kh888.cn/index.php?m=Shop&c=Item&a=cart', // 
+      data: {
+        mime: 'json',
+        sid: '1493708646',
+        id:`33`
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        console.log(res.data)
+      }
+    })
   },
 
   /**

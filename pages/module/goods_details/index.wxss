@@ -5,8 +5,10 @@
 }
 .detail_banner{
 	width:100%;
-	
 	background:#eee;
+}
+.detail_banner image{
+	width:100%;
 }
 .banner_item image{
 	height:375rpx;

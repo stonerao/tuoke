@@ -1,32 +1,24 @@
 {
-  "pages":[
-
+  "pages": [
+    "pages/module/goods_list/index",
+    "pages/module/shopping_cart/index",
+    "pages/module/goods_details/index",
+    "pages/module/goods_details/index",
     "pages/module/index/index",
     "pages/module/order_list/index",
-    "pages/module/shopping_address/index", 
-
-   
     "pages/module/pay_good/index",
-
+    "pages/module/shopping_address/index",
     "pages/module/oder_page/index",
     "pages/module/member/index",
-    
-    
-    "pages/module/shopping_cart/index",
-    "pages/module/goods_list/index",
-    "pages/module/goods_details/index",
-    
-    
-    "pages/module/order_list/index",
     "pages/diy/list/index"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "拓客教育",
-    "navigationBarTextStyle":"black"
+    "navigationBarTextStyle": "black"
   },
-  "tabBar":{
+  "tabBar": {
     "color": "#929292",
     "selectedColor": "#ff9630",
     "backgroundColor": "#f7f7f8",
@@ -34,11 +26,21 @@
     "list": [
       {
         "pagePath": "pages/module/index/index",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "pages/assets/images/icon-index-0.png",
+        "selectedIconPath": "pages/assets/images/icon-index-1.png"
+      },
+      {
+        "pagePath": "pages/module/goods_list/index",
+        "text": "商品",
+        "iconPath": "pages/assets/images/icon-shop-0.png",
+        "selectedIconPath": "pages/assets/images/icon-shop-1.png"
       },
       {
         "pagePath": "pages/module/member/index",
-        "text": "个人中心"
+        "text": "个人中心",
+        "iconPath": "pages/assets/images/icon-member-0.png",
+        "selectedIconPath": "pages/assets/images/icon-member-1.png"
       }
     ]
   }

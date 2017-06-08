@@ -115,3 +115,11 @@
 .index-infos-text{
 	font-size:26rpx;
 }
+.index-infos-item .index-infos-head{
+  height:34rpx;
+  line-height:34rpx;
+}
+.index-infos-item .index-infos-head image{
+  height:30rpx;
+  width:30rpx;
+}

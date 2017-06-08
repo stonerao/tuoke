@@ -138,9 +138,9 @@
 	background-position:0 0;
 }
 .shopping_list_style2{
-	
+	position: relative;
 }
-.shopping_list_style2 .shop_item{
+.shopping_list_style2 .shop_item navigator{
 	padding: 20rpx;
     border-bottom: rgb(238, 238, 238) solid 1px;
     overflow: hidden;

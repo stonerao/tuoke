@@ -1,9 +1,9 @@
-<import src="../../components/goods_alert.wxml"/>
+<import src="../../components/goods_alert.wxml" />
 <view class="goodsList background">
   <!--搜索-->
   <view class="goods_search">
     <view class="goods_search_box">
-      <input placeholder="商品搜索：请输入商品关键字" class="goods_search_inp" />
+      <input placeholder="商品搜索：请输入商品关键字" class="goods_search_inp" bindinput="searchVal" />
       <view class="goods_search_btn" bindtap="search_btn">
         <image src="../../assets/images/hui3.png" class="icon-search"></image>
       </view>
@@ -11,17 +11,17 @@
   </view>
   <view class="goods_list_title">
     <view class="goods_list_items">
-      <view class="goods_list_item ">
-        <text class="active">默认</text>
+      <view class="goods_list_item">
+        <text class="{{listActive==0?'active':''}}" data-num="0" data-sort="{{listSelect.def}}" bindtap="headList">默认</text>
       </view>
       <view class="goods_list_item">
-        <text class="goods_sort" style="background-image:url(../../assets/images/list1.png)">价格</text>
+        <text class="goods_sort {{listActive==1?'active':''}}" data-num="1" data-sort="{{listSelect.price}}" style="background-image:url(../../assets/images/{{listSelect.price==1?'list1':(listSelect.price==2?'list1_hover':'list1_hover2')}}.png)" bindtap="headList">价格</text>
       </view>
       <view class="goods_list_item">
-        <text class="goods_sort" style="background-image:url(../../assets/images/list1.png)">销量</text>
+        <text class="goods_sort {{listActive==2?'active':''}}" data-num="2" data-sort="{{listSelect.nums}}" style="background-image:url(../../assets/images/{{listSelect.nums==1?'list1':(listSelect.nums==2?'list1_hover':'list1_hover2')}}.png)" bindtap="headList">销量</text>
       </view>
       <view class="goods_list_item">
-        <text class="goods_sort" style="background-image:url(../../assets/images/list1.png)">人气</text>
+        <text class="goods_sort {{listActive==3?'active':''}}" data-num="3" data-sort="{{listSelect.pop}}" style="background-image:url(../../assets/images/{{listSelect.pop==1?'list1':(listSelect.pop==2?'list1_hover':'list1_hover2')}}.png)" bindtap="headList">人气</text>
       </view>
       <view class="goods_list_item" bindtap="shopping_style">
         <image src="../../assets/images/list3.jpg" class="shop_box_check"></image>
@@ -32,27 +32,30 @@
     <!--shopping_list_style1 样式1 shopping_list_style2 样式2-->
     <view class="{{is_style?'shopping_list_style1':'shopping_list_style2'}} shop_items">
       <view class="shop_item" wx:for="{{items}}" wx:for-index="$index" wx:key="$index" wx:for-item="item" data-id="{{item_id}}">
-        <view class="shop_item_image">
-          <image src="{{item.pic_url}}"></image>
-        </view>
-        <view class="shop_item_box">
-          <view class="shop_item_title">{{item.title}}</view>
-          <view class="shop_item_price">
-            <view>￥{{item.price}}</view>
-            <view>￥{{item.original_price}}</view>
+        <navigator url="../goods_details/index?goods_id={{item.item_id}}">
+          <view class="shop_item_image">
+            <image src="{{item.pic_url}}"></image>
           </view>
-          <view class="shop_item_labe" wx:if="{{is_style===false}}">
-            <text>11</text>
+          <view class="shop_item_box">
+            <view class="shop_item_title">{{item.title}}</view>
+            <view class="shop_item_price">
+              <view>￥{{item.price}}</view>
+              <view>￥{{item.original_price}}</view>
+            </view>
+            <view class="shop_item_labe" wx:if="{{is_style===false}}">
+              <text>11</text>
+            </view>
+
           </view>
-
-        </view>
-
-        <view class="icon-cart 1" style="background-image:url(../../assets/images/showcase2x-1416814739063.png)" bindtap="cartTap">
+        </navigator>
+        <view class="icon-cart 1" style="background-image:url(../../assets/images/showcase2x-1416814739063.png)" bindtap="cartTap" data-sid="{{item.item_id}}" data-goods_id="{{item.item_id}}">
         </view>
       </view>
+
     </view>
+
   </view>
-  
+
   <view class="goods_alert" wx:if="{{slect_alert}}">
     <view class="goods_select" animation="{{animationData}}">
       <view class="goods_select_head">
@@ -60,9 +63,9 @@
           <image src="../../assets/images/tx.jpg"></image>
         </view>
         <view class="goods_select_title">
-          <view>测试商品</view>
+          <view>{{addCartData}}</view>
           <view>
-            <text>￥</text>50.00</view>
+            <text>￥</text>{{addCartData.data.price}}</view>
         </view>
         <view bindtap="select_over" class="goods_select_over" style="background-image:url(../../assets/images/showcase2x-1416814739063.png)">
         </view>
@@ -80,7 +83,7 @@
           <view class="slect_num">
             <view class="slect_text">数量</view>
             <view class="slect_num_check">
-              <view class="slect_text">剩余：25</view>
+              <view class="slect_text">剩余：{{addCartData.data.stock_num}}</view>
               <view class="slect_num_btns">
                 <view class="btns" bindtap="cartValNum" data-static="0">-</view>
                 <input class="text_num" type="number" value="{{cartVal}}" />
@@ -91,8 +94,8 @@
         </view>
       </view>
       <view class="goods_list_sub">
-        <view class="sun_btn btn-orange-dark">立即购买</view>
-        <view class="sun_btn btn-orange-cart">加入购物车</view>
+        <view class="sun_btn btn-orange-dark" bindtap="go_shop">立即购买</view>
+        <view class="sun_btn btn-orange-cart" bindtap="add_carts" data-id="" data-goods_id="" data-sid="" data-sku_id="">加入购物车</view>
       </view>
     </view>
   </view>
