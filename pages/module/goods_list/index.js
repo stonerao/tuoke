@@ -33,7 +33,9 @@ Page({
       p: 1,//分页
     },
     addCartData: {},//购物车规格
-    thisArr:[],
+    thisArr: [],
+    selectIndex: [],
+    dataObj: []
   },
 
   /**
@@ -179,7 +181,8 @@ Page({
       success: function (res) {
         // 更新数据 
         _this.setData({
-          addCartData: res.data
+          addCartData: res.data,
+          dataObj: res.data.data.list
         })
         console.log(res.data)
       }
@@ -333,9 +336,7 @@ Page({
   add_carts(option) {
     //添加到购物车列表
     // ajax请求
-    wx.showLoading({
-      title: '添加中',
-    })
+    
     let _this = this;
     // 列表数据
     wx.request({
@@ -360,6 +361,14 @@ Page({
             title: res.data.msg,
             duration: 500
           })
+        }else{
+          _this.setData({
+            slect_alert: false
+          })
+          wx.showToast({
+            title: res.data.msg,
+            duration: 500
+          })
         }
         _this.setData({
 
@@ -368,7 +377,7 @@ Page({
       }
     })
   },
-  go_shop() {
+  go_shop(option) {
     //立即购买
     // ajax请求
     let _this = this;
@@ -405,43 +414,58 @@ Page({
     var obj = e.currentTarget.dataset;//当前选择当前的数据
     var thisData = this.data.addCartData.data.list;//所有数据列表
     var nums = this.data.addCartData.data.tree.length;//多少组
+
     var index = parseInt(obj.index);
-    this.data.thisArr[index]=obj.id;
-    var thisArr = this.data.thisArr;     
-    // dataArr[index] = obj.id;
-    // 如果选择的个数不全，不惊醒
-    if (nums != thisArr.length){return};
+    this.data.thisArr[index] = obj.id;
+    var thisArr = this.data.thisArr;
+    this.data.selectIndex[index] = obj.id;
+    this.setData({
+      selectIndex: this.data.selectIndex
+    })
+
+
+
+    // if (nums != thisArr.length){return}; 
+
+    for (var key in thisData) {
+
+      if (thisData[key][`s${index + 1}`] != obj.id) {
+        delete thisData[key];
+        // thisData.splice(parseInt(key),1)
+      }
+      // console.log(thisData[key])
+    } 
+    var arr = Array.from(thisData);
+ 
+    // var arrs = new Set(thisData)
+    // arrs.delete(undefined)
+    // if(arrs.size==0){
+    //   thisData = this.data.dataObj;
+    //   var arrs = new Set(thisData)
+    // }
+    // console.log(arrs)
+
+    for (var i = 0; i < thisData.length; i++) { 
+      if(thisData[i] == undefined) {
+        thisData.splice(i,1)
+      }
+    }
+
+    
     // 如果不选完
-    for (let i = 0; i < thisArr.length;i++){
-      if (thisArr[i] == '' || thisArr[i]==undefined){
+    for (let i = 0; i < thisArr.length; i++) {
+      if (thisArr[i] == '' || thisArr[i] == undefined) {
         return
       }
     }
-    // for (var key in thisData) { 
-    //   console.log(thisData[key])
-    //   if()
-    //   for(var jey in thisData[key]){
-    //     // console.log(key)
-    //     if(thisData[key][`s${key}`]==thisArr[key]){console.log(true)}
-    //     // console.log(thisData[key][`s${key}`],thisArr[key])
-    //   }
-    // } 
-    for(var key in thisArr){ 
-      for(var s in thisData){
-        var num = parseInt(key)+1
-        // console.log(thisArr[key],thisData[s][`s${num}`],`s${num}`)
-        if(thisArr[key]==thisData[s][`s${num}`]){
-            console.log(thisData[s],thisArr);
-            var str = thisData[s][`s${num}`];
-            for(var n in thisData[s]){
-              // if(thisData[s][`s${num}`])
-              console.log(thisData[s])
-            }
-            
-            return
-          // console.log(thisData[s])
-        }
-      }
+
+    if (thisData<2){
+      this.data.addCartData.data.list = this.data.dataObj;
+      thisData = this.data.dataObj;
+      this.setData({
+        
+      })
     }
+    console.log(thisData)
   }
 })
