@@ -5,10 +5,10 @@
       收货信息
     </view>
     <view class="oder_fill_adr" bindtap="alert_good">
-     
-        <text>填写收货地址</text>
-        <icon type="String" />
-      
+
+      <text>填写收货地址</text>
+      <icon type="String" />
+
     </view>
     <!--信息-->
     <view class="oder_page_info">
@@ -49,65 +49,69 @@
       <button>提交订单</button>
     </view>
   </view>
+  <!--模态框-->
   <view class="city_alert" wx:if="{{is_alert}}">
-    <view class="city_list_box">
+    <form bindsubmit="formSubmit" bindreset="formReset">
+      <view class="city_list_box">
 
-      <view class="city_list">
-        <view class="city_list_name">收件人:</view>
-        <view class="city_list_inp">
-          <input placeholder="收件人" />
+        <view class="city_list">
+          <view class="city_list_name">收件人:</view>
+          <view class="city_list_inp">
+            <input placeholder="收件人" name="username" />
+          </view>
         </view>
-      </view>
-      <view class="city_list">
-        <view class="city_list_name">手机号码:</view>
-        <view class="city_list_inp">
-          <input placeholder="手机号码" />
+        <view class="city_list">
+          <view class="city_list_name">手机号码:</view>
+          <view class="city_list_inp">
+            <input placeholder="手机号码" name="phone" />
+          </view>
         </view>
-      </view>
-      <!-- 选择地区 -->
-      <view class="city_list">
-        <view class="city_list_name">选择地区:</view>
-        <view class="city_list_select">
-          <!--<view bindchange="bindPickerChange" value="{{index}}" range="{{array}}">{{array[index]}}</view>-->
-          <!-- 省市区 -->
-          <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" class="flex33">
-            <view>
-              {{array[index]}}
-            </view>
-          </picker>
-          <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" class="flex33">
-            <view>
-              {{array[index]}}
-            </view>
-          </picker>
-          <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" class="flex33">
-            <view>
-              {{array[index]}}
-            </view>
-          </picker>
+        <!-- 选择地区 -->
+        <view class="city_list">
+          <view class="city_list_name">选择地区:</view>
+          <view class="city_list_select">
+            <!--<view bindchange="bindPickerChange" value="{{index}}" range="{{array}}">{{array[index]}}</view>-->
+            <!-- 省市区 -->
+            <picker bindchange="bindPickerChange1" value="{{shenIndex}}" range="{{adr.s1}}" range-key="province_name" class="flex33" name="adr1" bindtap="s1" >
+              <view>
+                省:{{adr.s1[shenIndex].province_name}}
+              </view>
+            </picker>
+            <picker bindchange="bindPickerChange2" value="shiIndex" range="{{adr.s2}}" range-key="city_name" class="flex33" name="adr2" bindtap="s2" data-index="{{index}}">
+              <view>
+                市:{{adr.s2[shiIndex].city_name}}
+              </view>
+            </picker>
+            <picker bindchange="bindPickerChange3" value="0" range="{{adr.s3}}" range-key="province_name" class="flex33" name="adr3" bindtap="s3">
+              <view>
+                区:{{adr.s3[0].province_name}}
+              </view>
+            </picker>
+          </view>
         </view>
-      </view>
 
 
-      <view class="city_list">
-        <view class="city_list_name">详细地址:</view>
-        <view class="city_list_inp">
-          <input placeholder="手机号码" />
+        <view class="city_list">
+          <view class="city_list_name">详细地址:</view>
+          <view class="city_list_inp">
+            <input placeholder="手机号码" name="adrinfo" />
+          </view>
         </view>
-      </view>
 
 
-      <view class="city_list">
-        <view class="city_list_name">邮政编码:</view>
-        <view class="city_list_inp">
-          <input placeholder="手机号码" />
+        <view class="city_list">
+          <view class="city_list_name">邮政编码:</view>
+          <view class="city_list_inp">
+            <input placeholder="手机号码" name="code" />
+          </view>
         </view>
-      </view>
 
-    </view>
-    <view class="city_btns">
-    	<button>确定</button>
-    	<button bindtap="alert_good">取消</button>
-    </view>
+      </view>
+      <view class="city_btns">
+        <button formType="submit">确定</button>
+        <button formType="reset" bindtap="alert_good">取消</button>
+      </view>
+    </form>
   </view>
+
 </view>

@@ -336,7 +336,7 @@ Page({
   add_carts(option) {
     //添加到购物车列表
     // ajax请求
-    
+
     let _this = this;
     // 列表数据
     wx.request({
@@ -362,7 +362,7 @@ Page({
             title: res.data.msg,
             duration: 500
           })
-        }else{
+        } else {
           _this.setData({
             slect_alert: false
           })
@@ -392,19 +392,36 @@ Page({
         num: _this.data.cartVal,//true 
         sku_id: `63`,//false
         t: `1`,//false，
-        debug_user:`169`
+        debug_user: `169`
       },
       header: {
         'content-type': 'applicatiozn/json',
       },
       success: function (res) {
+        //立即购买第二步
+        
+        var data = res.data.data
+        data['debug_user']="169";
+        console.log(JSON.stringify(data))
+        wx.navigateTo({
+          url: `../oder_page/index?obj=${JSON.stringify(data)}`
+        })
+        // wx.request({
+        //   method: "POST",
+        //   url: util.buy_sub1, // 立即购买
+        //   data: data,
+        //   header: {
+        //     'content-type': 'applicatiozn/json',
+        //   },
+        //   success: function (res) {
+            
 
-        if (res.data.status == 0) {
-          wx.showToast({
-            title: res.data.msg,
-            duration: 500
-          })
-        }
+
+        //   }
+        // })
+
+
+
         _this.setData({
 
         })
@@ -436,9 +453,9 @@ Page({
         // thisData.splice(parseInt(key),1)
       }
       // console.log(thisData[key])
-    } 
+    }
     var arr = Array.from(thisData);
- 
+
     // var arrs = new Set(thisData)
     // arrs.delete(undefined)
     // if(arrs.size==0){
@@ -447,13 +464,13 @@ Page({
     // }
     // console.log(arrs)
 
-    for (var i = 0; i < thisData.length; i++) { 
-      if(thisData[i] == undefined) {
-        thisData.splice(i,1)
+    for (var i = 0; i < thisData.length; i++) {
+      if (thisData[i] == undefined) {
+        thisData.splice(i, 1)
       }
     }
 
-    
+
     // 如果不选完
     for (let i = 0; i < thisArr.length; i++) {
       if (thisArr[i] == '' || thisArr[i] == undefined) {
@@ -461,11 +478,11 @@ Page({
       }
     }
 
-    if (thisData<2){
+    if (thisData < 2) {
       this.data.addCartData.data.list = this.data.dataObj;
       thisData = this.data.dataObj;
       this.setData({
-        
+
       })
     }
     console.log(thisData)

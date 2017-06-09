@@ -7,16 +7,16 @@ Page({
    */
   data: {
     items: [
-      { cart_id: "names1", img: "../../assets/images/tx.jpg", price: "0.02", num: 2, checked: false },
-      { cart_id: "names2", img: "../../assets/images/tx.jpg", price: "0.02", num: 2, checked: false },
-      { cart_id: "names3", img: "../../assets/images/tx.jpg", price: "0.02", num: 2, checked: false },
-      { cart_id: "names4", img: "../../assets/images/tx.jpg", price: "0.02", num: 2, checked: false },
+      { cart_id: "1", img: "../../assets/images/tx.jpg", price: "0.02", num: 2, checked: false },
+      { cart_id: "2", img: "../../assets/images/tx.jpg", price: "0.02", num: 2, checked: false },
+      { cart_id: "3", img: "../../assets/images/tx.jpg", price: "0.02", num: 2, checked: false },
+      { cart_id: "4", img: "../../assets/images/tx.jpg", price: "0.02", num: 2, checked: false },
     ],
     val: "",
     checkedVal: [],
     isAll: false,
     price: 0,
-    thisCheckBox:[]
+    thisCheckBox: []
   },
 
   /**
@@ -91,6 +91,7 @@ Page({
 
   },
   delect_set(e) {
+    //删除购物车
     console.log(e)
     var arr = this.data.items;
     console.log(this.data.thisCheckBox);
@@ -112,13 +113,19 @@ Page({
     /*this.setData({
       items:arr
     })*/
+    this.priceChange();
   },
   checkbox_items(e) {
+    //点击选择
+    //保存
     console.log(e)
     this.setData({
       thisCheckBox: e.detail.value
     })
+    
+    this.priceChange();
     console.log(e.detail.value)
+   
   },
   selectTap(option) {
   },
@@ -127,29 +134,23 @@ Page({
   },
   formReset: function () {
 
-  }, 
+  },
   listenCheckboxChange: function (e) {
-    console.log('当checkbox-group中的checkbox选中或者取消是我被调用');
-    //打印对象包含的详细信息
-    console.log(e);
-    
-
-
+    this.priceChange();
   },
   all_slecelt(e) {
+    // 选择所有
     this.data.isAll = !this.data.isAll;
     if (this.data.isAll) {
       for (var key in this.data.items) {
         if (!this.data.items[key].cheked) {
           this.data.items[key].cheked = true;
-          console.log(this.data.items[key].cheked)
         }
       }
     } else {
       for (var key in this.data.items) {
         if (this.data.items[key].cheked) {
           this.data.items[key].cheked = false;
-          console.log(this.data.items[key].cheked)
         }
       }
     }
@@ -165,19 +166,24 @@ Page({
         price += parseFloat((this.data.items[key].price2 ? this.data.items[key].price2 : this.data.items[key].price)).toFixed(2) * parseInt(this.data.items[key].num)
       }
     }
+    
+
     price = parseFloat(price).toFixed(2);
+    console.log(this.data.items[key].cheked)
     this.setData({
       price: price
     })
   },
-  formBindsubmit(e){
-    
+  formBindsubmit(e) {
+    //结算
+    var _this = this;
+    console.log(_this.data.thisCheckBox)
     wx.request({
-      method:"POST",
+      method: "POST",
       url: util.Order_go, //仅为示例，并非真实的接口地址
       data: {
-        debug_user:"169",
-        checkbox: this.data.thisCheckBox
+        debug_user: "169",
+        checkbox: _this.data.thisCheckBox
       },
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
@@ -186,5 +192,8 @@ Page({
         console.log(res.data)
       }
     })
+  },
+  list(e){
+    console.log(e)
   }
 })

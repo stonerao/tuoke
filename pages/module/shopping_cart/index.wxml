@@ -14,12 +14,11 @@
 
       <checkbox-group bindchange="checkbox_items" name="check">
 
-        <view class="shop_items" wx:for="{{items}}" wx:for-index="$index" wx:for-item="item" wx:key="$index" data-id="{{$index}}">
+        <view class="shop_items" wx:for="{{items}}" wx:for-index="$index" wx:for-item="item" wx:key="$index" data-id="{{$index}}" bindtap="list" data-num="{{item.num}}" >
           <view class="shop_item">
             <!--checkbox-->
             <view class="shop_item_check">
               <checkbox value="{{item.cart_id}}/{{item.num}}" checked="{{item.cheked}}" class="chec" data-num="{{item.num}}" name="checkbox"/>
-               
             </view>
             <view class="shop_item_img">
               <image src="{{item.front_path}}"></image>
