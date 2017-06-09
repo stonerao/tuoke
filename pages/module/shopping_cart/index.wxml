@@ -1,4 +1,5 @@
 <!--购物车-->
+
 <view class="shop_cart">
   <view class="shop_cart_title">
     <view class="cart_title">我的购物车</view>
@@ -7,51 +8,60 @@
     </view>
   </view>
   <!--items-->
-  <view class="shop_main" >
+  <view class="shop_main">
     <view class="shop_list">
-    <!--data-->
-      <view class="shop_items" wx:for="{{items}}" wx:for-index="$index" wx:for-item="item" wx:key="$index" data-id="{{$index}}">
-        <checkbox-group class="shop_item" bindchange="checkbox_items">
-          <!--checkbox-->
-          <view class="shop_item_check">
-            <checkbox value="{{item.name}}" checked="{{item.checked}}" value="{{val}}" class="chec" bindtap="selectTap"/>{{item.value}}
-          </view>
-          <view class="shop_item_img">
-            <image src="{{item.img}}"></image>
-          </view>
-          <view class="shop_item_title">
-            {{item.name}}
-          </view>
-          <view class="shop_item_nums">
-            <view class="shop_item_price">
-              ￥{{item.price}}
+      <!--data-->
+
+      <checkbox-group bindchange="checkbox_items" name="check">
+
+        <view class="shop_items" wx:for="{{items}}" wx:for-index="$index" wx:for-item="item" wx:key="$index" data-id="{{$index}}">
+          <view class="shop_item">
+            <!--checkbox-->
+            <view class="shop_item_check">
+              <checkbox value="{{item.cart_id}}/{{item.num}}" checked="{{item.cheked}}" class="chec" data-num="{{item.num}}" name="checkbox"/>
+               
             </view>
-            <view class="shop_item_num">
-              <text>数量</text>
-              <input value="1" />
+            <view class="shop_item_img">
+              <image src="{{item.front_path}}"></image>
+            </view>
+            <view class="shop_item_title">
+              {{item.title}}
+            </view>
+            <view class="shop_item_nums">
+              <view class="shop_item_price">
+                ￥{{item.price2?item.price2:item.price}}
+              </view>
+              <view class="shop_item_num">
+                <text>数量</text>
+                <input value="{{item.num}}"/>
+              </view>
             </view>
           </view>
-        </checkbox-group>
-      </view>
+        </view>
+      </checkbox-group>
+
     </view>
   </view>
   <!--footer-->
   <view class="cart_footer">
     <label class="cart_footer_check">
-      <checkbox value="value" checked="false" />全选
+     <checkbox-group bindchange="all_slecelt">
+      <checkbox value="value" checked="{{isAll}}" />全选
+      </checkbox-group >
     </label>
     <view class="cart_footer_sub" id="cart_footer_sub">
       <view class="cart_footer_nums">
         <view class="cart_footer_price">
-        合计：￥0.02元 <text>0.02</text>
+          合计：￥{{price}}元
+          <!--<text>0.02</text>-->
         </view>
         <view class="cart_footer_text">
-        <text>（共一件，不含运费）</text>
+          <text>（共一件，不含运费）</text>
         </view>
       </view>
       <!--结算-->
       <view class="cart_footer_btn">
-        <button>去结算</button>
+        <button bindtap="formBindsubmit">去结算</button>
       </view>
     </view>
   </view>

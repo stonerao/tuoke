@@ -347,7 +347,8 @@ Page({
         id: `33`,//true 商品id
         num: _this.data.cartVal,//true 
         sku_id: `63`,//false
-        t: `1`//false
+        t: `1`,//false
+        debug_user: `169`
       },
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
