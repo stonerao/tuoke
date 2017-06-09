@@ -1,4 +1,5 @@
 // pages/module/shopping_cart/index.js
+let util = require('../../../config.js');
 Page({
 
   /**
@@ -20,11 +21,9 @@ Page({
    */
   onLoad: function (options) {
     wx.request({
-      url: 'http://wfx.dev.kh888.cn/index.php?m=Shop&c=Item&a=cart', // 
+      url: util.cart_list, // 
       data: {
-        mime: 'json',
-        sid: '1493708646',
-        id:`33`
+        debug_user:`169`
       },
       header: {
         'content-type': 'application/json'
@@ -92,5 +91,8 @@ Page({
   },
   checkbox_items(e){
     console.log(e);
+  },
+  selectTap(option){
+
   }
 })

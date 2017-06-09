@@ -64,48 +64,48 @@
 </view>
 
 <view class="goods_alert" wx:if="{{slect_alert}}">
-  <view class="goods_select" animation="{{animationData}}">
-    <view class="goods_select_head">
-      <view class="goods_select_img">
-        <image src="../../assets/images/tx.jpg"></image>
-      </view>
-      <view class="goods_select_title">
-        <view>测试商品</view>
-        <view>
-          <text>￥</text>50.00</view>
-      </view>
-      <view bindtap="select_over" class="goods_select_over" style="background-image:url(../../assets/images/showcase2x-1416814739063.png)">
-      </view>
-    </view>
-    <view class="goods_select_box">
-      <view class="goods_select_class">
-        <view class="slect_class" wx:for="[0]">
-          <view class="slect_class_title">
-            颜色
-          </view>
-          <view class="slect_class_option">
-            <view class="slecct_option_item " wx:for="[2]" data-items="1" bindtap="select_class">1</view>
-          </view>
+    <view class="goods_select" animation="{{animationData}}">
+      <view class="goods_select_head">
+        <view class="goods_select_img">
+          <image src="../../assets/images/tx.jpg"></image>
         </view>
-        <view class="slect_num">
-          <view class="slect_text">数量</view>
-          <view class="slect_num_check">
-            <view class="slect_text">剩余：25</view>
-            <view class="slect_num_btns">
-              <view class="btns" bindtap="cartValNum" data-static="0">-</view>
-              <input class="text_num" type="number" value="{{cartVal}}" />
-              <view class="btns" bindtap="cartValNum" data-static="1">+</view>
+        <view class="goods_select_title">
+          <view>{{addCartData}}</view>
+          <view>
+            <text>￥</text>{{addCartData.data.price}}</view>
+        </view>
+        <view bindtap="select_over" class="goods_select_over" style="background-image:url(../../assets/images/showcase2x-1416814739063.png)">
+        </view>
+      </view>
+      <view class="goods_select_box">
+        <view class="goods_select_class">
+          <view class="slect_class " wx:for="{{addCartData.data.tree}}" wx:for-index="$index" wx:for-item="items" wx:key="$index">
+            <view class="slect_class_title ">
+              {{items.k}}
+            </view>
+            <view class="slect_class_option">
+              <view class="slecct_option_item {{selectIndex[$index]==item.id?'active':''}}" wx:for="{{items.v}}" wx:for-item="item" wx:for-index="$num"  wx:key="$num"  data-index="{{$index}}" data-id="{{item.id}}" bindtap="select_class" bindtap="selectOption" >{{item.name}}</view>
+            </view>
+          </view>
+          <view class="slect_num">
+            <view class="slect_text">数量</view>
+            <view class="slect_num_check">
+              <view class="slect_text">剩余：{{addCartData.data.stock_num}}</view>
+              <view class="slect_num_btns">
+                <view class="btns" bindtap="cartValNum" data-static="0">-</view>
+                <input class="text_num" type="number" value="{{cartVal}}" />
+                <view class="btns" bindtap="cartValNum" data-static="1">+</view>
+              </view>
             </view>
           </view>
         </view>
       </view>
-    </view>
-    <view class="goods_list_sub">
-      <view class="sun_btn btn-orange-dark" bindtap="go_shop">立即购买</view>
+      <view class="goods_list_sub">
+        <view class="sun_btn btn-orange-dark" bindtap="go_shop">立即购买</view>
         <view class="sun_btn btn-orange-cart" bindtap="add_carts" data-id="" data-goods_id="" data-sid="" data-sku_id="">加入购物车</view>
+      </view>
     </view>
   </view>
-</view>
 <view id="goods_footer">
   <view class="goods_footer_sub btn btn-white">立即购买</view>
   <view class="goods_footer_cart btn btn-orange-dark" bindtap="cartTap">加入购物车</view>

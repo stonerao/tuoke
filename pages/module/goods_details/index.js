@@ -16,6 +16,8 @@ Page({
       animationData: {}
     },//弹框
     slect_alert: false,//购物车模态框
+    addCartData:[],
+    dataObj: []
   },
 
   /**
@@ -100,7 +102,27 @@ Page({
     })
   },
   cartTap(e) {
-
+    // 点击购物车按钮
+    // ajax 
+    var _this = this;
+    let goodsId = this.data.goods.goods_id;
+    wx.request({
+      url: util.add_cart, // 商品列表
+      data: {
+        goods_id: `${goodsId}`
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        // 更新数据 
+        _this.setData({
+          addCartData: res.data,
+          dataObj: res.data.data.list
+        })
+        console.log(res.data)
+      }
+    })
     // 动画
     this.setData({
       animationData: {}
@@ -122,7 +144,6 @@ Page({
       animationData: animation.export()
     })
     animation.step()
-
   },
   select_over(){
     // 关闭
@@ -147,9 +168,7 @@ Page({
   add_carts(option) {
     //添加到购物车列表
     // ajax请求
-    wx.showLoading({
-      title: '添加中',
-    })
+
     let _this = this;
     // 列表数据
     wx.request({
@@ -163,14 +182,21 @@ Page({
         t: `1`//false
       },
       header: {
-        'content-type': 'applicatiozn/json',
+        "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function (res) {
         // 关闭加载模态框
         wx.hideLoading();
         // 更新数据 
-        console.log()
         if (res.data.status == 0) {
+          wx.showToast({
+            title: res.data.msg,
+            duration: 500
+          })
+        } else {
+          _this.setData({
+            slect_alert: false
+          })
           wx.showToast({
             title: res.data.msg,
             duration: 500
@@ -183,7 +209,7 @@ Page({
       }
     })
   },
-  go_shop() {
+  go_shop(option) {
     //立即购买
     // ajax请求
     let _this = this;
@@ -215,5 +241,5 @@ Page({
 
       }
     })
-  }
+  },
 })

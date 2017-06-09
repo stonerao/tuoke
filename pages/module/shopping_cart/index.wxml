@@ -14,7 +14,7 @@
         <checkbox-group class="shop_item" bindchange="checkbox_items">
           <!--checkbox-->
           <view class="shop_item_check">
-            <checkbox value="{{item.name}}" checked="{{item.checked}}" value="{{val}}" class="chec"/>{{item.value}}
+            <checkbox value="{{item.name}}" checked="{{item.checked}}" value="{{val}}" class="chec" bindtap="selectTap"/>{{item.value}}
           </view>
           <view class="shop_item_img">
             <image src="{{item.img}}"></image>

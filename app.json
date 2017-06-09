@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/module/goods_list/index",
     "pages/module/shopping_cart/index",
+    "pages/module/goods_list/index",
     "pages/module/goods_details/index",
     "pages/module/goods_details/index",
     "pages/module/index/index",
