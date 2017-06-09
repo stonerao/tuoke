@@ -17,6 +17,8 @@ let config = {
     s1:`http://wfx.dev.kh888.cn/index.php?m=Shop&c=Order&a=getProvince&sid=1493708646&mime=json`,//省
     s2: `http://wfx.dev.kh888.cn/index.php?m=Shop&c=Order&a=getCity&sid=1493708646&mime=json`,//市
     s3: `http://wfx.dev.kh888.cn/index.php?m=Shop&c=Order&a=getArea&sid=1493708646&mime=json`,//区
-  }
+  },
+  member:`http://wfx.dev.kh888.cn/index.php?m=Shop&c=User&a=index&sid=1493708646&mime=json`,//个人中心
+  sub_oder:`http://wfx.dev.kh888.cn/index.php?m=Shop&c=Order&a=add_order&mime=json&sid=1493708646`,//提交订单
 }
 module.exports = config

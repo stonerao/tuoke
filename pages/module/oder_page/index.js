@@ -45,8 +45,7 @@ Page({
       header: {
         'content-type': 'applicatiozn/json',
       },
-      success: function (res) { 
-        console.log(res.data)
+      success: function (res) {  
         _this.setData({
           allData:res.data
         })
@@ -219,7 +218,8 @@ Page({
       }
     })
 
-  }, s3(e) {
+  },
+   s3(e) {
     // 获取判断是什么
     var _this = this;
     console.log(e.target)
@@ -242,6 +242,23 @@ Page({
         console.log(_this.data.adr)
       }
     })
-
-  }
+  },
+   subOrder(){
+     var _this = this; 
+     wx.request({
+       url: util.sub_oder, // 立即购买
+       data: {
+         debug_user:"169",
+         did:'0',
+         groupbuy_id:'',
+         chief_uid:''
+       },
+       header: {
+         "Content-Type": "application/x-www-form-urlencoded"
+       },
+       success: function (res) {
+         console.log(res.data)
+       }
+     })
+   }
 })

@@ -387,15 +387,15 @@ Page({
       method: "POST",
       url: util.buy_sub, // 立即购买
       data: {
-        goods_id: `33`,
-        id: `33`,//true 商品id
+        goods_id: `34`,
+        id: `34`,//true 商品id
         num: _this.data.cartVal,//true 
         sku_id: `63`,//false
         t: `1`,//false，
         debug_user: `169`
       },
       header: {
-        'content-type': 'applicatiozn/json',
+        "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function (res) {
         //立即购买第二步

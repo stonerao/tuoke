@@ -11,31 +11,32 @@
 
     </view>
     <!--信息-->
-    <view class="oder_page_info">
+    <view class="oder_page_info" wx:for="{{allData.cart}}" wx:key="index">
       <view class="oder_page_head">
         <navigator url="" class="over_page_img">
-          <image src="../../assets/images/tx.jpg"></image>
+          <image src="{{item.front_path}}"></image>
         </navigator>
         <view class="oder_page_info oder_page">
           <view class="oder_name">
-            我是shopping名字
+            {{item.title}}
           </view>
           <view class="oder_nums">
-            <view>数量：1</view>
-            <view class="flex2">原价：0.02</view>
+            <view>数量：{{item.buy_num}}</view>
+            <view class="flex2">原价：{{item.old_price}}</view>
             <view class="oder_price">
-              <text>￥</text>0.02
+              <text>￥</text>{{item.price2?item.price2:item.price}}
             </view>
           </view>
 
         </view>
 
       </view>
-      <view class="over_allprice ">
-        商品总价：
-        <text>￥0.02</text>
-      </view>
 
+
+    </view>
+    <view class="over_allprice" style="background:#fffz">
+      商品总价：
+      <text>￥{{allData.total_old_price}}</text>
     </view>
     <view class="oder_integral">
       赠送积分
@@ -46,7 +47,7 @@
         <view class="oder_texts_title">买家留言：</view>
         <textarea placeholder="你想对店主说点什么" name="textarea" class="textarea" />
       </view>
-      <button>提交订单</button>
+      <button bindtap="subOrder">提交订单</button>
     </view>
   </view>
   <!--模态框-->
@@ -72,7 +73,7 @@
           <view class="city_list_select">
             <!--<view bindchange="bindPickerChange" value="{{index}}" range="{{array}}">{{array[index]}}</view>-->
             <!-- 省市区 -->
-            <picker bindchange="bindPickerChange1" value="{{shenIndex}}" range="{{adr.s1}}" range-key="province_name" class="flex33" name="adr1" bindtap="s1" >
+            <picker bindchange="bindPickerChange1" value="{{shenIndex}}" range="{{adr.s1}}" range-key="province_name" class="flex33" name="adr1" bindtap="s1">
               <view>
                 省:{{adr.s1[shenIndex].province_name}}
               </view>
