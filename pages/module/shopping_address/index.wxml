@@ -17,30 +17,30 @@
   </view>
   <view class="adr_main">
     <view class="adr_items">
-      <view class="adr_item" wx:for="{{3}}">
+      <view class="adr_item" wx:for="{{adrData.addressList}}" wx:key="index" data-id='{{item.address_id}}'>
         <view class="adr_item_title">
           <view class="adr_item_name">
            <image src="../../assets/images/icon-check-0.png" class="city_icon mor_icon"></image> 设置默认地址
           </view>
           <view class="adr_item_icon">
             <image src="../../assets/images/set.png" class="city_icon"></image>
-            <image src="../../assets/images/delect.png" class="city_icon"></image>
+            <image src="../../assets/images/delect.png" class="city_icon" bindtap="delect" data-id='{{item.address_id}}'></image>
           </view>
         </view>
 
         <view class="adr_item_info">
           <image src="../../assets/images/adr.png" class="city_icon adr_icons"></image>
-          <text>张三</text>
-          <text>213123123</text>
+          <text>{{item.name}}</text>
+          <text>{{item.mobile}}</text>
         </view>
         <view class="adr_item_city">
-          地址：是大叔大叔大叔打算撒事实上是事实是事实是事实是事实是事实上是事实是事实是事实
+          地址：{{item.address}}
         </view>
       </view>
     </view>
 
   </view>
-   <view class="not_text">
+   <view class="not_text" wx:if="{{adrData.addressList.length<1}}">
       <image src="../../assets/images/icon-address.png" class="not_text_icon"></image>
       <view>您还没有添加收货地址</view>
     </view>

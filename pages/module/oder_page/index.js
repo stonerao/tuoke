@@ -14,21 +14,37 @@ Page({
     index: 1,
     is_alert: false,//弹出框
     adrData:{
-      name:"",
-      phone:"",
-      adr:{
-        s1:'',
-        s2:'',
-        s3:'',
-      },
-      adtaDetail: '',
-      code: ''
+      debug_user: "169",
+      name: "stone",
+      mobile: "18583671750",
+      address: "四川省",
+      zip: "610000",
+      province_id: "110000",
+      city_id: "110100",
+      area_id: "110101"
     },
     shenId:0,//省ID
     shenIndex:0,//省索引
     shiId: 0,//市ID
     shiIndex: 0,//市索引
     allData:{},//所有数据
+    data: {
+      debug_user:util.debug_user,
+      groupbuy_id: '',
+      chief_uid: '',
+      cid: ``,
+      item_id: ``,
+      sku_id: ``,
+      num: ``,
+      total_price: ``,
+      current_price: ``,
+      payment: ``,
+      address_id: `10`,
+      postfee: ``,
+      message: ``,
+      cart_ids: ``,
+      code: `0`
+    },//提交訂單所有信息
   },
 
   /**
@@ -50,7 +66,28 @@ Page({
           allData:res.data
         })
         console.log(res.data)
+        _this.data.data.groupbuy_id = res.data.groupbuy_id;
+        _this.data.data.chief_uid = res.data.chief_uid;
+        _this.data.data.cid = res.data.cid;
+        _this.data.data.total_price = res.data.total_price;
+        _this.data.data.cart_ids = res.data.cart_ids;
+        _this.data.data.payment = res.data.total_price;
+        _this.data.data.postfee = res.data.shipping_fee;
+        // 商品id skuId
+        var [cartId, skuId, num, current_price] = [[],[],[],[]]        
 
+        for(var key in res.data.cart){
+          cartId.push(res.data.cart[key].goods_id)
+          skuId.push(res.data.cart[key].skuId)
+          num.push(res.data.cart[key].buy_num)
+          current_price.push(res.data.cart[key].price2 ? res.data.cart[key].price2 : res.data.cart[key].price)
+        }
+        _this.data.data.cartId = cartId;
+        _this.data.data.skuId = skuId;
+        _this.data.data.num = num;
+        _this.data.data.current_price = current_price;
+
+        console.log(_this.data.data)
       }
     })
   },
@@ -134,21 +171,12 @@ Page({
     })
   },
   formSubmit: function (e) {
-    
+    // 添加地址
     var _this = this;
     wx.request({
       method: "POST",
-      url: util.add_adr, // 立即购买
-      data: {
-        debug_user:"169",
-        name:"stone",
-        mobile:"18583671750",
-        address:"四川省",
-        zip	:"610000",
-        province_id:"110000",
-        city_id:"110100",
-        area_id:"110101"
-      },
+      url: util.add_adr, // 
+      data: this.adrData,
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
@@ -207,7 +235,6 @@ Page({
         "Content-Type": "application/x-www-form-urlencoded"
       },
       success: function (res) {
-
         // get
         _this.data.adr.s2 = res.data.data;
         //updata
@@ -244,21 +271,31 @@ Page({
     })
   },
    subOrder(){
+    //  提交订单
      var _this = this; 
      wx.request({
-       url: util.sub_oder, // 立即购买
-       data: {
-         debug_user:"169",
-         did:'0',
-         groupbuy_id:'',
-         chief_uid:''
-       },
+       method:"POST",
+       url: util.sub_oder+`&did=0`, // 立即购买
+       data: this.data.data,
        header: {
          "Content-Type": "application/x-www-form-urlencoded"
        },
        success: function (res) {
-         console.log(res.data)
+         console.log(res.data);
+         if (res.data.status==1){
+
+         }else{
+           wx.showToast({
+             title: res.data.msg,
+             duration: 500
+           })
+         }
        }
      })
+   },
+   textInput(e){
+     var value = e.detail.value;
+     //留言
+     this.data.data.message = value;
    }
 })

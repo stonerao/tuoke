@@ -3,13 +3,14 @@
   <view class="member-head" style="background-image:url(../../assets/images/tt_bj.jpg)">
     <!--头像-->
     <view class="member-head-avatar">
-      <image src="../../assets/images/tx.jpg"></image>
+      <image src="{{memberData.user_info.user_headimgurl}}"></image>
     </view>
     <!--信息-->
     <view class="member-head-info">
       <view class="text">
-        积分:
-        <view class="member-head-check"><view class="three-block"></view>会员签到</view>
+        积分:{{memberData.user_info.user_integral}}
+        <view class="member-head-check" bindtap="member_check">
+          <view class="three-block"></view>会员签到</view>
       </view>
     </view>
   </view>
@@ -18,29 +19,88 @@
     <view class="member-order-url">
       <view class="member-order-all">
         全部订单
-        <text>(0)</text>
+        <text>({{memberData.orderArr.Allorder}})</text>
       </view>
       <view class="member-order-click">
-        <navigator url="../order_list/index" hover-class="none">点击查看 > </navigator>
+        <navigator url="{{orderList}}" hover-class="none">点击查看 > </navigator>
       </view>
     </view>
     <view class="member-static-items">
-      <view class="member-static-item" wx:for="{{static}}" wx:key="$index" wx:for-item="item" wx:for-index="$index">
-      <navigator url="" hover-class="none">
-        <view class="member-static-num">
-          {{item.number}}
-        </view>
-        <view class="member-static-text">
-          {{item.name}}
-        </view>
+      <!--待付款-->
+      <view class="member-static-item">
+        <navigator url="{{orderList}}0" hover-class="none">
+          <view class="member-static-num">
+            {{memberData.orderArr.Daiorder}}
+          </view>
+          <view class="member-static-text">
+            待付款
+          </view>
         </navigator>
       </view>
+      <!--待发货-->
+      <view class="member-static-item">
+        <navigator url="{{orderList}}1" hover-class="none">
+          <view class="member-static-num">
+            {{memberData.orderArr.Payorder}}
+          </view>
+          <view class="member-static-text">
+            待发货
+          </view>
+        </navigator>
+      </view>
+      <!--待收货-->
+      <view class="member-static-item">
+        <navigator url="{{orderList}}2" hover-class="none">
+          <view class="member-static-num">
+            {{memberData.orderArr.Faorder}}
+          </view>
+          <view class="member-static-text">
+            待收货
+          </view>
+        </navigator>
+      </view>
+      <!--待评价-->
+      <view class="member-static-item">
+        <navigator url="{{orderList}}3" hover-class="none">
+          <view class="member-static-num">
+            {{memberData.orderArr.Pingorder}}
+          </view>
+          <view class="member-static-text">
+            待评价
+          </view>
+        </navigator>
+      </view>
+      <!--待换货-->
+      <view class="member-static-item">
+        <navigator url="{{orderList}}5" hover-class="none">
+          <view class="member-static-num">
+            {{memberData.orderArr.Tuioder}}
+          </view>
+          <view class="member-static-text">
+            待换货
+          </view>
+        </navigator>
+      </view>
+      <!--呆拼团-->
+      <!--暂无数据-->
+      <view class="member-static-item">
+        <navigator url="{{orderList}}6" hover-class="none">
+          <view class="member-static-num">
+            {{memberData.orderArr.Tuioder}}
+          </view>
+          <view class="member-static-text">
+            待拼团
+          </view>
+        </navigator>
+      </view>
+
+
     </view>
   </view>
   <!-- 选择列表 -->
   <view class="member-list">
     <view class="member-list-option" wx:for="{{check}}" wx:key="$index" wx:for-item="item" wx:for-index="$index">
-      <navigator hover-class="none">
+      <navigator hover-class="none" url="{{item.url}}">
         <view class="member-list-image">
           <image src="{{item.img}}"></image>
         </view>

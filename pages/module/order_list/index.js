@@ -1,12 +1,15 @@
 // pages/module/order_list/index.js
+let util = require('../../../config.js');
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    list: ['全部', '待收货', '待发货', '代收款', '待评价'],
+    list: ['全部', '代付款', '待发货', '待收货', '待评价', '待换货', '待拼团'],
     listActive: 0,
+    page:1
   },
 
   /**
@@ -14,6 +17,10 @@ Page({
    */
   onLoad: function (options) {
 
+    this.setData({
+      listActive: options.active
+    })
+    this.ajaxData();
   },
 
   /**
@@ -55,7 +62,9 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    this.setData({
+      page:this.data.page++
+    })
   },
 
   /**
@@ -71,13 +80,36 @@ Page({
       listActive: index
     });
     // 判断当前点击位置
+    console.log(index)
     switch (index) {
       case 0:
-        console.log(1)
         break;
         ;
       default:
         ;
     }
+    this.ajaxData();
+  },
+  ajaxData() {
+    var index = this.data.listActive - 1;
+    index==-1?index='':'';
+    console.log(index)
+    // list状态值
+    var _this = this;
+    wx.request({
+      url: util.order_list,
+      data: {
+        debug_user: util.debug_user,
+        type:index,
+        p:this.data.page
+      },
+      header: { "Content-Type": "application/x-www-form-urlencoded"},
+      method: 'POST',
+      dataType: 'json',
+      success: function (res) {
+        console.log(res.data)
+      },
+      fail: function (res) { },
+    })
   }
 })

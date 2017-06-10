@@ -4,6 +4,9 @@
     <view class="over_title">
       收货信息
     </view>
+    <view class="order_adr">
+    
+    </view>
     <view class="oder_fill_adr" bindtap="alert_good">
 
       <text>填写收货地址</text>
@@ -27,12 +30,8 @@
               <text>￥</text>{{item.price2?item.price2:item.price}}
             </view>
           </view>
-
         </view>
-
       </view>
-
-
     </view>
     <view class="over_allprice" style="background:#fffz">
       商品总价：
@@ -45,7 +44,7 @@
     <view class="oder_submit">
       <view class="oder_texts">
         <view class="oder_texts_title">买家留言：</view>
-        <textarea placeholder="你想对店主说点什么" name="textarea" class="textarea" />
+        <textarea placeholder="你想对店主说点什么" name="textarea" class="textarea" bindinput="textInput"/>
       </view>
       <button bindtap="subOrder">提交订单</button>
     </view>
@@ -58,13 +57,13 @@
         <view class="city_list">
           <view class="city_list_name">收件人:</view>
           <view class="city_list_inp">
-            <input placeholder="收件人" name="username" />
+            <input placeholder="收件人" name="name" value="{{adrData.name}}"/>
           </view>
         </view>
         <view class="city_list">
           <view class="city_list_name">手机号码:</view>
           <view class="city_list_inp">
-            <input placeholder="手机号码" name="phone" />
+            <input placeholder="手机号码" name="mobile" value="{{adrData.mobile}}"/>
           </view>
         </view>
         <!-- 选择地区 -->
@@ -73,17 +72,17 @@
           <view class="city_list_select">
             <!--<view bindchange="bindPickerChange" value="{{index}}" range="{{array}}">{{array[index]}}</view>-->
             <!-- 省市区 -->
-            <picker bindchange="bindPickerChange1" value="{{shenIndex}}" range="{{adr.s1}}" range-key="province_name" class="flex33" name="adr1" bindtap="s1">
+            <picker bindchange="bindPickerChange1" value="{{shenIndex}}" range="{{adr.s1}}" range-key="province_name" class="flex33" name="province_id" bindtap="s1">
               <view>
                 省:{{adr.s1[shenIndex].province_name}}
               </view>
             </picker>
-            <picker bindchange="bindPickerChange2" value="shiIndex" range="{{adr.s2}}" range-key="city_name" class="flex33" name="adr2" bindtap="s2" data-index="{{index}}">
+            <picker bindchange="bindPickerChange2" value="shiIndex" range="{{adr.s2}}" range-key="city_name" class="flex33" name="city_id" bindtap="s2" data-index="{{index}}">
               <view>
                 市:{{adr.s2[shiIndex].city_name}}
               </view>
             </picker>
-            <picker bindchange="bindPickerChange3" value="0" range="{{adr.s3}}" range-key="province_name" class="flex33" name="adr3" bindtap="s3">
+            <picker bindchange="bindPickerChange3" value="0" range="{{adr.s3}}" range-key="province_name" class="flex33" name="area_id" bindtap="s3">
               <view>
                 区:{{adr.s3[0].province_name}}
               </view>
@@ -95,7 +94,7 @@
         <view class="city_list">
           <view class="city_list_name">详细地址:</view>
           <view class="city_list_inp">
-            <input placeholder="手机号码" name="adrinfo" />
+            <input placeholder="手机号码" name="address" value="{{adrData.address}}"/>
           </view>
         </view>
 
@@ -103,7 +102,7 @@
         <view class="city_list">
           <view class="city_list_name">邮政编码:</view>
           <view class="city_list_inp">
-            <input placeholder="手机号码" name="code" />
+            <input placeholder="手机号码" name="zip" value="{{adrData.zip}}" />
           </view>
         </view>
 

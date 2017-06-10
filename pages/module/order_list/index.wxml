@@ -1,7 +1,7 @@
 <!--订单列表-->
 <view class="list">
   <view class="list_head">
-    <view scroll-x style="width: 100%" class="list_scroll"  bindtap="headList">
+    <view scroll-x style="width: 100%" class="list_scroll"  >
       <!--<view class="list_head_item" data-num="1">
         全部
       </view>
@@ -14,7 +14,7 @@
       <view class="list_head_item" data-num="4">
         待收款
       </view>-->
-      <view class="list_head_item {{listActive==$index?'active':''}}" data-num="{{$index}}" wx:for="{{list}}" wx:for-index="$index" wx:key="{{$index}}">
+      <view class="list_head_item {{listActive==$index?'active':''}}" bindtap="headList" data-num="{{$index}}" wx:for="{{list}}" wx:for-index="$index" wx:key="{{$index}}">
         {{item}}
       </view>
     </view>
