@@ -404,7 +404,7 @@ Page({
         data['debug_user']="169";
         console.log(JSON.stringify(data))
         wx.navigateTo({
-          url: `../oder_page/index?obj=${JSON.stringify(data)}`
+          url: `../oder_page/index?class=2&obj=${JSON.stringify(data)}`
         })
         // wx.request({
         //   method: "POST",

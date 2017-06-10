@@ -9,7 +9,8 @@ Page({
   data: {
     list: ['全部', '代付款', '待发货', '待收货', '待评价', '待换货', '待拼团'],
     listActive: 0,
-    page:1
+    page: 1,
+    datas: []
   },
 
   /**
@@ -63,7 +64,7 @@ Page({
    */
   onReachBottom: function () {
     this.setData({
-      page:this.data.page++
+      page: this.data.page++
     })
   },
 
@@ -92,7 +93,7 @@ Page({
   },
   ajaxData() {
     var index = this.data.listActive - 1;
-    index==-1?index='':'';
+    index == -1 ? index = '' : '';
     console.log(index)
     // list状态值
     var _this = this;
@@ -100,16 +101,23 @@ Page({
       url: util.order_list,
       data: {
         debug_user: util.debug_user,
-        type:index,
-        p:this.data.page
+        type: index,
+        p: this.data.page
       },
-      header: { "Content-Type": "application/x-www-form-urlencoded"},
+      header: { "Content-Type": "application/x-www-form-urlencoded" },
       method: 'POST',
       dataType: 'json',
       success: function (res) {
         console.log(res.data)
+        _this.setData({
+          datas: res.data
+        })
+        console.log(_this.data.datas)
       },
       fail: function (res) { },
     })
+  },
+  quit_order(e){
+    //取消
   }
 })

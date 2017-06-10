@@ -178,20 +178,10 @@ Page({
     //结算
     var _this = this;
     console.log(_this.data.thisCheckBox)
-    wx.request({
-      method: "POST",
-      url: util.Order_go, //仅为示例，并非真实的接口地址
-      data: {
-        debug_user: "169",
-        checkbox: _this.data.thisCheckBox
-      },
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      success: function (res) {
-        console.log(res.data)
-      }
+    wx.navigateTo({
+      url: `../oder_page/index?class=1&arr=${_this.data.thisCheckBox}`
     })
+    
   },
   list(e){
     console.log(e)
