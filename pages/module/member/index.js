@@ -56,7 +56,8 @@ Page({
           memberData: res.data
         })
       }
-    })
+    });
+     
   },
 
   /**

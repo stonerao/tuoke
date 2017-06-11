@@ -12,7 +12,7 @@ Page({
       s3: []
     },
     index: 1,
-    is_alert: false,//弹出框
+    is_alert: false, //弹出框
     adrData: {
       debug_user: "169",
       name: "stone",
@@ -23,11 +23,11 @@ Page({
       city_id: "110100",
       area_id: "110101"
     },
-    shenId: 0,//省ID
-    shenIndex: 0,//省索引
-    shiId: 0,//市ID
-    shiIndex: 0,//市索引
-    allData: {},//所有数据
+    shenId: 0, //省ID
+    shenIndex: 0, //省索引
+    shiId: 0, //市ID
+    shiIndex: 0, //市索引
+    allData: {}, //所有数据
     data: {
       debug_user: util.debug_user,
       groupbuy_id: '',
@@ -44,13 +44,13 @@ Page({
       message: ``,
       cart_ids: ``,
       code: `0`
-    },//提交訂單所有信息
+    }, //提交訂單所有信息
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (option) {
+  onLoad: function(option) {
     console.log(option)
     var _this = this;
     // 购物车进来
@@ -65,7 +65,7 @@ Page({
         header: {
           "Content-Type": "application/x-www-form-urlencoded"
         },
-        success: function (res) {
+        success: function(res) {
           _this.setData({
             allData: res.data
           })
@@ -77,7 +77,12 @@ Page({
           _this.data.data.payment = res.data.total_price;
           _this.data.data.postfee = res.data.shipping_fee;
           // 商品id skuId
-          var [item_id, skuId, num, current_price] = [[], [], [], []]
+          var [item_id, skuId, num, current_price] = [
+            [],
+            [],
+            [],
+            []
+          ]
 
           for (var key in res.data.cart) {
             item_id.push(res.data.cart[key].goods_id)
@@ -92,17 +97,17 @@ Page({
 
         }
       })
-    } else if (option.class ==2) {
+    } else if (option.class == 2) {
 
       var data = JSON.parse(option.obj)
-      //请求数据
+        //请求数据
       wx.request({
         url: util.buy_sub1, // 立即购买
         data: data,
         header: {
           "Content-Type": "application/x-www-form-urlencoded"
         },
-        success: function (res) {
+        success: function(res) {
           _this.setData({
             allData: res.data
           })
@@ -114,7 +119,12 @@ Page({
           _this.data.data.payment = res.data.total_price;
           _this.data.data.postfee = res.data.shipping_fee;
           // 商品id skuId
-          var [item_id, skuId, num, current_price] = [[], [], [], []]
+          var [item_id, skuId, num, current_price] = [
+            [],
+            [],
+            [],
+            []
+          ]
 
           for (var key in res.data.cart) {
             item_id.push(res.data.cart[key].goods_id)
@@ -136,7 +146,7 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function (options) {
+  onReady: function(options) {
 
 
   },
@@ -144,7 +154,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function (options) {
+  onShow: function(options) {
     // console.log(options)
     // var data = options.obj
     // console.log(data)
@@ -153,35 +163,35 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function (options) {
+  onHide: function(options) {
     console.log(options)
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
 
@@ -192,7 +202,7 @@ Page({
       shenIndex: e.detail.value
     })
   },
-  bindPickerChange2: function (e) {
+  bindPickerChange2: function(e) {
 
 
     this.setData({
@@ -200,7 +210,7 @@ Page({
       shiIndex: e.detail.value
     })
   },
-  bindPickerChange3: function (e) {
+  bindPickerChange3: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index: e.detail.value
@@ -211,7 +221,7 @@ Page({
       is_alert: !this.data.is_alert
     })
   },
-  formSubmit: function (e) {
+  formSubmit: function(e) {
     // 添加地址
     var _this = this;
     wx.request({
@@ -221,7 +231,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      success: function (res) {
+      success: function(res) {
         console.log(res)
         wx.showToast({
           title: '成功',
@@ -236,7 +246,7 @@ Page({
       }
     })
   },
-  formReset: function () {
+  formReset: function() {
     console.log('form发生了reset事件')
   },
   s1(e) {
@@ -250,7 +260,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      success: function (res) {
+      success: function(res) {
 
         // get
         _this.data.adr.s1 = res.data.data;
@@ -275,7 +285,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      success: function (res) {
+      success: function(res) {
         // get
         _this.data.adr.s2 = res.data.data;
         //updata
@@ -299,7 +309,7 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      success: function (res) {
+      success: function(res) {
 
         // get
         _this.data.adr.s3 = res.data.data;
@@ -321,10 +331,20 @@ Page({
       header: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
-      success: function (res) {
+      success: function(res) {
         console.log(res.data);
         if (res.data.status == 1) {
+          wx.showToast({
+            title: '下单成功',
+            duration: 500,
+            success() {
+              console.log(1)
+              wx.reLaunch({
+                url: `../member/index`
+              })
 
+            }
+          })
         } else {
           wx.showToast({
             title: res.data.msg,

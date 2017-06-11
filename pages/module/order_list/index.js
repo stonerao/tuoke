@@ -64,8 +64,10 @@ Page({
    */
   onReachBottom: function () {
     this.setData({
-      page: this.data.page++
+      page: this.data.page+1
     })
+    console.log(this.data.page)
+    this.ajaxData();
   },
 
   /**
@@ -108,11 +110,13 @@ Page({
       method: 'POST',
       dataType: 'json',
       success: function (res) {
-        console.log(res.data)
+        for(var key in res.data.data){
+          _this.data.datas.push(res.data.data[key]);
+        }
         _this.setData({
-          datas: res.data
+          datas:  _this.data.datas
         })
-        console.log(_this.data.datas)
+         
       },
       fail: function (res) { },
     })

@@ -120,13 +120,17 @@ Page({
             method: 'POST',
             dataType: 'json',
             success: function (res) {
-              console.log(res.data)
               if (res.data.status != 1) { return };
               // 提示
               wx.showToast({
                 title: '删除成功',
                 icon: 'success',
-                duration: 1000
+                duration: 1000,
+                success(){
+                  wx.reLaunch({
+                    url:"index"
+                  })
+                }
               })
             },
             fail: function (res) { },

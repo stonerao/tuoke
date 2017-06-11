@@ -26,6 +26,7 @@ let config = {
   sub_oder:`http://wfx.dev.kh888.cn/index.php?m=Shop&c=Order&a=add_order&mime=json&sid=1493708646`,//提交订单
   check_in:`http://wfx.dev.kh888.cn/index.php?m=Shop&c=User&a=checkin&sid=1493708646&mime=json`,//签到
   order_list:`http://wfx.dev.kh888.cn/index.php?m=Shop&c=Order&a=lists&sid=1493708646&mime=json`,//订单列表
+  diy:`http://wfx.dev.kh888.cn/index.php?m=Shop&c=Magazine&a=index&sid=1493708646&mime=json`,//diy
   
 }
 module.exports = config

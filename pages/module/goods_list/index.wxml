@@ -45,10 +45,10 @@
             <view class="shop_item_labe" wx:if="{{is_style===false}}">
               <text>11</text>
             </view>
-
           </view>
         </navigator>
-        <view class="icon-cart 1" style="background-image:url(../../assets/images/showcase2x-1416814739063.png)" bindtap="cartTap" data-sid="{{item.item_id}}" data-goods_id="{{item.item_id}}">
+        <!--添加购物车-->
+        <view class="icon-cart 1" style="background-image:url(../../assets/images/showcase2x-1416814739063.png)" bindtap="cartTap" data-sid="{{item.item_id}}" data-goods_id="{{item.item_id}}" data-img="{{item.pic_url}}" data-name="{{item.title}}" data-price="{{item.price}}">
         </view>
       </view>
 
@@ -60,12 +60,12 @@
     <view class="goods_select" animation="{{animationData}}">
       <view class="goods_select_head">
         <view class="goods_select_img">
-          <image src="../../assets/images/tx.jpg"></image>
+          <image src="{{cartActiveData.img?cartActiveData.img:'../../assets/images/tx.jpg'}}"></image>
         </view>
         <view class="goods_select_title">
-          <view>{{addCartData}}</view>
+          <view>{{cartActiveData.name}}</view>
           <view>
-            <text>￥</text>{{addCartData.data.price}}</view>
+            <text>￥</text>{{cartActiveData.price}}</view>
         </view>
         <view bindtap="select_over" class="goods_select_over" style="background-image:url(../../assets/images/showcase2x-1416814739063.png)">
         </view>
@@ -73,11 +73,11 @@
       <view class="goods_select_box">
         <view class="goods_select_class">
           <view class="slect_class " wx:for="{{addCartData.data.tree}}" wx:for-index="$index" wx:for-item="items" wx:key="$index">
-            <view class="slect_class_title ">
+            <view class="slect_class_title">
               {{items.k}}
             </view>
             <view class="slect_class_option">
-              <view class="slecct_option_item {{selectIndex[$index]==item.id?'active':''}}" wx:for="{{items.v}}" wx:for-item="item" wx:for-index="$num"  wx:key="$num"  data-index="{{$index}}" data-id="{{item.id}}" bindtap="select_class" bindtap="selectOption" >{{item.name}}</view>
+              <view class="slecct_option_item {{selectIndex[$index]==item.id?'active':''}}" wx:for="{{items.v}}" wx:for-item="item" wx:for-index="$num" wx:key="$num" data-index="{{$index}}" data-key="{{items.k_s}}" data-id="{{item.id}}" bindtap="select_class" bindtap="selectOption">{{item.name}}</view>
             </view>
           </view>
           <view class="slect_num">
