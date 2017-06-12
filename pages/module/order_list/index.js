@@ -19,7 +19,7 @@ Page({
   onLoad: function (options) {
 
     this.setData({
-      listActive: options.active
+      listActive: (options.active-1)
     })
     this.ajaxData();
   },
@@ -98,7 +98,7 @@ Page({
     this.ajaxData();
   },
   ajaxData() {
-    var index = this.data.listActive - 1;
+    var index = this.data.listActive ;
     index == -1 ? index = '' : '';
     console.log(index)
     // list状态值

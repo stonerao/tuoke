@@ -1,7 +1,7 @@
 <!--订单列表-->
 <view class="list">
   <view class="list_head">
-    <view scroll-x style="width: 100%" class="list_scroll">
+    <view scroll-x style="width: 100%" class="list_scroll"  >
       <!--<view class="list_head_item" data-num="1">
         全部
       </view>
@@ -21,12 +21,13 @@
   </view>
   <view class="list_main">
     <view class="list_items">
+      
       <view class="list_item" wx:for="{{datas}}" wx:key="index">
         <view class="list_item_title">
           订单号：{{item.order_sn}}
         </view>
         <view class="list_item_infos">
-          <view class="list_item_box" bindtap="orderInfo" data-order_sn="{{item.order_sn}}" data-order_id="{{item.order_id}}">
+          <view class="list_item_box">
             <view class="list_item_img">
               <image src="{{item.goods_image}}"></image>
             </view>
@@ -46,8 +47,8 @@
             共查看全部5件商品
           </view>-->
           <view class="list_item_btns">
-            <view class="list_item_quit" bindtap="quit_order" data-order_sn="{{item.order_sn}}" wx:if="{{item.status==0}}">取消订单</view>
-            <view class="list_item_sub" wx:if="{{item.status==0}}"  bindtap="orderInfo" data-order_sn="{{item.order_sn}}" data-order_id="{{item.order_id}}">立即付款</view>
+            <view class="list_item_quit" bindtap="quit_order">取消订单</view>
+            <view class="list_item_sub">立即付款</view>
           </view>
         </view>
       </view>

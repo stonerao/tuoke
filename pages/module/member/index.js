@@ -124,6 +124,11 @@ Page({
       ,
       success(res) {
         if (res.data.status == 1) {
+          var num = parseInt(res.data.points);
+          _this.data.memberData.user_info.user_integral+=num;
+          _this.setData({
+            memberData:_this.data.memberData
+          })
           wx.showToast({
             title: "签到成功",
             duration: 500
