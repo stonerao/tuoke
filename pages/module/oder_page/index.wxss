@@ -41,6 +41,14 @@
     font-size: 32rpx;
     float:right;
 }
+.over_header .icon-right{
+	position:absolute;
+	right:20rpx;
+	top:50%;
+	transform:translateY(-50%);
+	width:50rpx;
+	height:50rpx;
+}
 .oder_page_info{
 	background:#fff;
 }

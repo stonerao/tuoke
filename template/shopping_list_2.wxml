@@ -1,4 +1,4 @@
-<template name="tp_shop_list_2">
+<template name="2">
   <view class="shopping_list_style2 shop_items box_view">
     <view class="shop_item" wx:for="{{datas}}">
       <navigator url="">

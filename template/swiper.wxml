@@ -1,0 +1,9 @@
+<template name="3"> 
+ <swiper indicator-dots="true" autoplay="true" >
+      <block wx:for="{{datas}}">
+        <swiper-item>
+          <image src="../../assets/images/01.jpg" class="tp_swiper1"/>
+        </swiper-item>
+      </block>
+    </swiper>
+</template>

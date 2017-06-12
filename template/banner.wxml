@@ -1,0 +1,4 @@
+<template name="4"> 
+	<view class="diy-banner"><image src="../../assets/images/01.jpg" class="tp_swiper1"/></view>
+ 
+</template>

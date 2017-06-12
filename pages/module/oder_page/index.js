@@ -368,5 +368,11 @@ Page({
   isAdr(){
     // 判断是否有购物地址
     
+  },
+  eyeAdr(){
+    // 去地址
+    wx.navigateTo({
+      url: '../shopping_address/index',
+    })
   }
 })
