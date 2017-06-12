@@ -67,6 +67,7 @@
 	display:flex;
 	justify-content:flex-end;
 	padding:15rpx 30rpx;
+  margin-bottom:20rpx;
 }
 .list_item_btns view{
 	width:148rpx;
@@ -77,6 +78,7 @@
 	text-align:center;
 		border-radius:5rpx;
 }
+ 
 .list_item_btns .list_item_quit{
 	color:#8e8e8e;
 	border:1rpx solid #8e8e8e;

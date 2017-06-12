@@ -4,8 +4,10 @@
     <view class="over_title">
       收货信息
     </view>
-    <view class="order_adr">
-    
+   <view class="oder_fill_adr1" wx:if="{{allData.user_address}}" data-id="{{allData.user_address.address_id}}">
+   <view class="">收货人姓名：{{allData.user_address.name}}</view>
+      <view class="">地址：{{allData.user_address.province_id}}{{allData.user_address.city}}{{allData.user_address.area}}{{allData.user_address.address}}</view>
+     <view class="">电话：{{allData.user_address.mobile}} <text>邮编：</text>{{allData.user_address.zip}}</view>
     </view>
     <view class="oder_fill_adr" bindtap="alert_good">
 
@@ -13,6 +15,8 @@
       <icon type="String" />
 
     </view>
+     
+    
     <!--信息-->
     <view class="oder_page_info" wx:for="{{allData.cart}}" wx:key="index">
       <view class="oder_page_head">

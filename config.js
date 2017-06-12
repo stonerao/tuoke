@@ -16,6 +16,7 @@ let config = {
   get_adr: `http://wfx.dev.kh888.cn/index.php?m=Shop&c=Item&a=del${sid}`,//收获地址列表
   add_adr: `http://wfx.dev.kh888.cn/index.php?m=Shop&c=Order&a=addAddress&sid=1493708646&mime=json`,//addd=地址列表
   adr_list: `http://wfx.dev.kh888.cn/index.php?m=Shop&c=Order&a=addressList&sid=1493708646&mime=json`,//地址列表
+  set_adr: `http://wfx.dev.kh888.cn/index.php?m=Shop&c=Order&a=editAddress&sid=1493708646&mime=json`,//修改
   adr_delect: `http://wfx.dev.kh888.cn/index.php?m=Shop&c=Order&a=delAddress&sid=1493708646&mime=json`,//刪除购物车
   adr:{
     s1:`http://wfx.dev.kh888.cn/index.php?m=Shop&c=Order&a=getProvince&sid=1493708646&mime=json`,//省
@@ -26,6 +27,9 @@ let config = {
   sub_oder:`http://wfx.dev.kh888.cn/index.php?m=Shop&c=Order&a=add_order&mime=json&sid=1493708646`,//提交订单
   check_in:`http://wfx.dev.kh888.cn/index.php?m=Shop&c=User&a=checkin&sid=1493708646&mime=json`,//签到
   order_list:`http://wfx.dev.kh888.cn/index.php?m=Shop&c=Order&a=lists&sid=1493708646&mime=json`,//订单列表
+  quit_order:`http://wfx.dev.kh888.cn/index.php?m=Shop&c=Order&a=order_status&sid=1493708646&mime=json`,//取消订单
+  comment_list:`http://wfx.dev.kh888.cn/index.php?m=Shop&c=Order&a=comment_list&sid=1493708646&mime=json`,//待评价
+  order_info:`http://wfx.dev.kh888.cn/index.php?m=Shop&c=Order&a=order_pay&sid=1493708646&mime=json`,//订单详情
   diy:`http://wfx.dev.kh888.cn/index.php?m=Shop&c=Magazine&a=index&sid=1493708646&mime=json`,//diy
   
 }

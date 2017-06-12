@@ -1,0 +1,77 @@
+<view class="order_info">
+  <!--状态-->
+  <view class="order_info_list">
+    <text class="hui-color">订单状态：</text>
+    <text class="cheng-color">{{datas._title}}</text>
+  </view>
+  <!--地址-->
+  <view class="order_info_list order_info_adr mg-b">
+    <view class="order_info_adrImg">
+      <image src="../../assets/images/adr.png"></image>
+    </view>
+    <view class="order_info_text">
+      <view class="">
+        <text>张三</text>
+        <text>136***6666</text>
+      </view>
+      <view class="hui-color order_padding">
+        我是一段地址
+      </view>
+    </view>
+    <view class="order_info_icon">
+      <image src="../../assets/images/right.png"></image>
+    </view>
+
+  </view>
+  <!--商品列表-->
+  <view class="order_shop_items">
+    <view class="order_shop_title hui-color">
+      <view class="">
+        订单号：{{datas.sid}}
+      </view>
+      <view class="">
+        下单时间：{{datas.dates}}</view>
+    </view>
+    <!--items-->
+    <view class="order_shop_item" wx:for="{{datas.order_goods}}" wx:key="index">
+      <view class="order_shop_item_img">
+        <image src="{{item.goods_image}}"></image>
+      </view>
+      <view class="order_shop_item_content">
+        <view class="order_shop_item_text">
+          {{item.message}}
+        </view>
+        <view class="order_shop_item_nums">
+          <text class="order_shop_item_price cheng-color">￥{{item.price}}</text>
+          <text class="hui-color">x{{item.quantity}}</text>
+        </view>
+      </view>
+    </view>
+    <!--price-->
+    <view class="order_shop_price">
+      实付款：
+      <text class="cheng-color ">￥159.00</text>
+    </view>
+  </view>
+  <!--留言-->
+  <view class="order_info_liu">
+    <view class="">卖家留言</view>
+    <view class=" order_info_textar">
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+    </view>
+  </view>
+  <view class="order_info_list space-between">
+    <text class="hui-color">配送方式：</text>
+    <text>快递配送</text>
+  </view>
+  <view class="order_info_list space-between">
+    <text class="hui-color">选择优惠：</text>
+    <text>未使用优惠</text>
+  </view>
+  <!--btns-->
+  <view class="order_info_btns ">
+    <button type="primary">微信支付</button>
+    <button class="cheng_btn">会员卡支付</button>
+    <button>返回订单列表</button> 
+  </view>
+</view>

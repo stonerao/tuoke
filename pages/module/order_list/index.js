@@ -79,9 +79,13 @@ Page({
   headList(e) {
     // 当前点击索引
     let index = e.target.dataset.num;
+    this.data.page = 1;
     this.setData({
       listActive: index
     });
+    this.setData({
+      datas:[]
+    })
     // 判断当前点击位置
     console.log(index)
     switch (index) {
@@ -100,14 +104,14 @@ Page({
     // list状态值
     var _this = this;
     wx.request({
-      url: util.order_list,
+      url: _this.data.listActive != 3 ? util.order_list : util.comment_list,
       data: {
         debug_user: util.debug_user,
         type: index,
         p: this.data.page
       },
-      header: { "Content-Type": "application/x-www-form-urlencoded" },
-      method: 'POST',
+      // header: { "Content-Type": "application/x-www-form-urlencoded" },
+      method: 'GET',
       dataType: 'json',
       success: function (res) {
         for(var key in res.data.data){
@@ -123,5 +127,46 @@ Page({
   },
   quit_order(e){
     //取消
+    console.log(e);
+    var obj = e.target.dataset;
+    // list状态值
+    var _this = this;
+    wx.showModal({
+      title: '提示',
+      content: '这是一个模态弹窗',
+      success: function (res) {
+        if (res.confirm) {
+          wx.request({
+            url: util.quit_order,
+            data: {
+              debug_user: util.debug_user,
+              order_sn: obj.order_sn,
+              status: 4
+            },
+            method: 'GET',
+            dataType: 'json',
+            success: function (res) {
+              wx.showToast({
+                title: res.data.msg,
+                icon: 'success',
+                duration: 2000
+              })
+
+            },
+            fail: function (res) { },
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+    
+  },
+  orderInfo(e){
+    // 列表详情跳转
+    var obj = e.currentTarget.dataset;
+    wx.navigateTo({
+      url: `../order_info/index?order_id=${obj.order_id}&order_sn=${obj.order_sn}`,
+    })
   }
 })

@@ -32,7 +32,7 @@
     <!--shopping_list_style1 样式1 shopping_list_style2 样式2-->
     <view class="{{is_style?'shopping_list_style1':'shopping_list_style2'}} shop_items">
       <view class="shop_item" wx:for="{{items}}" wx:for-index="$index" wx:key="$index" wx:for-item="item" data-id="{{item_id}}">
-        <navigator url="../goods_details/index?goods_id={{item.item_id}}">
+        <navigator url="../goods_details/index?goods_id={{item.item_id}}&sid=1493708646">
           <view class="shop_item_image">
             <image src="{{item.pic_url}}"></image>
           </view>
@@ -48,7 +48,7 @@
           </view>
         </navigator>
         <!--添加购物车-->
-        <view class="icon-cart 1" style="background-image:url(../../assets/images/showcase2x-1416814739063.png)" bindtap="cartTap" data-sid="{{item.item_id}}" data-goods_id="{{item.item_id}}" data-img="{{item.pic_url}}" data-name="{{item.title}}" data-price="{{item.price}}">
+        <view class="icon-cart 1" style="background-image:url(../../assets/images/showcase2x-1416814739063.png)" bindtap="cartTap" data-sid="1493708646" data-goods_id="{{item.item_id}}" data-img="{{item.pic_url}}" data-name="{{item.title}}" data-price="{{item.price}}">
         </view>
       </view>
 

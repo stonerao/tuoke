@@ -7,5 +7,6 @@
     "pages/module/pay_good/index" --> 支付成功
     "pages/module/member/index" --> 个人中心
     "pages/module/order_list/index" --> 订单列表
+    "pages/module/order_info/index" --> 订单详情
     "pages/module/shopping_address/index -->  购物地址
     "pages/module/address/index", --> 收货地址添加/编辑

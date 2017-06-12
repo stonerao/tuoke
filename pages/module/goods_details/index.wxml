@@ -22,40 +22,46 @@
         <view class="detail_price_num">
           <text>￥</text>{{goods.price}}
         </view>
-        <view class="detail_souc" style="background-image:url(../../assets/images/add_wish@2x.png)">
+        <!--<view class="detail_souc" style="background-image:url(../../assets/images/add_wish@2x.png)">
           搜藏
-        </view>
+        </view>-->
       </view>
       <view class="detail_list">
         <view class="detail_list_items">
-          <view class="detail_list_item">
-            <view class="detail_name">计量单位：</view>
-            <view class="detail_content"> 23</view>
+          <view class="detail_list_item" wx:if="{{goods.weight_unit}}">
+            <view class="detail_name">{{goods.weight_unit}}：</view>
+            <view class="detail_content"> {{goods.weight_unit}}</view>
           </view>
           <view class="detail_list_item">
-            <view class="detail_name">免运费</view>
-            <view class="detail_content"> 12</view>
+            <view class="detail_name">销量：</view>
+            <view class="detail_content">{{goods.sale_count}}{{goods.meas_units}}</view>
+          </view>
+          <view class="detail_list_item"  >
+            <view class="detail_name">运费：</view>
+            <view class="detail_content">{{goods.freight_payer==1?'免邮':goods.post_fee}}</view>
           </view>
         </view>
       </view>
     </view>
 
     <view class="detail_selct">
-      <view class="detail_selct_items">
+      <!--<view class="detail_selct_items">
         选择：
         <text>颜色</text>
         <text class=""></text>
-      </view>
+      </view>-->
 
     </view>
     <view class="detail_text">
       <view class="detail_text_title" bindtap="activeTap">
-        <view class="{{active==1?'active':''}}" data-active="1">图文详情</view>
-        <view class="{{active==2?'active':''}}" data-active="2">商品评价</view>
+        <view   data-active="1">图文详情</view>
+        <!--<view class="{{active==2?'active':''}}" data-active="2">商品评价</view>-->
       </view>
-      <view class="text_content">
+      <view class="text_content" >
         <!-- 内容 -->
+        {{goods.content}}
       </view>
+       
     </view>
 
   </view>
@@ -67,12 +73,12 @@
     <view class="goods_select" animation="{{animationData}}">
       <view class="goods_select_head">
         <view class="goods_select_img">
-          <image src="../../assets/images/tx.jpg"></image>
+          <image src="{{cartActiveData.img?cartActiveData.img:'../../assets/images/tx.jpg'}}"></image>
         </view>
         <view class="goods_select_title">
-          <view>{{addCartData}}</view>
+          <view>{{cartActiveData.name}}</view>
           <view>
-            <text>￥</text>{{addCartData.data.price}}</view>
+            <text>￥</text>{{cartActiveData.price}}</view>
         </view>
         <view bindtap="select_over" class="goods_select_over" style="background-image:url(../../assets/images/showcase2x-1416814739063.png)">
         </view>
@@ -80,11 +86,11 @@
       <view class="goods_select_box">
         <view class="goods_select_class">
           <view class="slect_class " wx:for="{{addCartData.data.tree}}" wx:for-index="$index" wx:for-item="items" wx:key="$index">
-            <view class="slect_class_title ">
+            <view class="slect_class_title">
               {{items.k}}
             </view>
             <view class="slect_class_option">
-              <view class="slecct_option_item {{selectIndex[$index]==item.id?'active':''}}" wx:for="{{items.v}}" wx:for-item="item" wx:for-index="$num"  wx:key="$num"  data-index="{{$index}}" data-id="{{item.id}}" bindtap="select_class" bindtap="selectOption" >{{item.name}}</view>
+              <view class="slecct_option_item {{selectIndex[$index]==item.id?'active':''}}" wx:for="{{items.v}}" wx:for-item="item" wx:for-index="$num" wx:key="$num" data-index="{{$index}}" data-key="{{items.k_s}}" data-id="{{item.id}}" bindtap="select_class" bindtap="selectOption">{{item.name}}</view>
             </view>
           </view>
           <view class="slect_num">
@@ -106,7 +112,8 @@
       </view>
     </view>
   </view>
+
 <view id="goods_footer">
-  <view class="goods_footer_sub btn btn-white">立即购买</view>
-  <view class="goods_footer_cart btn btn-orange-dark" bindtap="cartTap">加入购物车</view>
+  <view class="goods_footer_sub btn btn-white" bindtap="go_shop">立即购买</view>
+  <view class="goods_footer_cart btn btn-orange-dark" bindtap="cartTap" data-sid="1493708646" data-goods_id="{{goods.item_id}}" data-img="{{goods.front_path}}" data-name="{{goods.title}}" data-price="{{goods.price}}">加入购物车</view>
 </view>

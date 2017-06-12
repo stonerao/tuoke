@@ -23,7 +23,7 @@
            <image src="../../assets/images/icon-check-0.png" class="city_icon mor_icon"></image> 设置默认地址
           </view>
           <view class="adr_item_icon">
-            <image src="../../assets/images/set.png" class="city_icon"></image>
+            <image src="../../assets/images/set.png" class="city_icon" bindtap="alert_good" data-address_id="{{item.address_id}}"></image>
             <image src="../../assets/images/delect.png" class="city_icon" bindtap="delect" data-id='{{item.address_id}}'></image>
           </view>
         </view>
@@ -45,65 +45,67 @@
       <view>您还没有添加收货地址</view>
     </view>
   <!--模态框-->
-  <view class="city_alert" wx:if="{{is_alert}}">
-    <view class="city_list_box">
+ <view class="city_alert" wx:if="{{is_alert}}">
+    <form bindsubmit="formSubmit" bindreset="formReset">
+      <view class="city_list_box">
 
-      <view class="city_list">
-        <view class="city_list_name">收件人:</view>
-        <view class="city_list_inp">
-          <input placeholder="收件人" />
+        <view class="city_list">
+          <view class="city_list_name">收件人:</view>
+          <view class="city_list_inp">
+            <input placeholder="收件人" name="name" value="{{adrDataAjax.name}}" bindinput="setVal"/>
+          </view>
         </view>
-      </view>
-      <view class="city_list">
-        <view class="city_list_name">手机号码:</view>
-        <view class="city_list_inp">
-          <input placeholder="手机号码" />
+        <view class="city_list">
+          <view class="city_list_name">手机号码:</view>
+          <view class="city_list_inp">
+            <input placeholder="手机号码" name="mobile" value="{{adrDataAjax.mobile}}"/>
+          </view>
         </view>
-      </view>
-      <!-- 选择地区 -->
-      <view class="city_list">
-        <view class="city_list_name">选择地区:</view>
-        <view class="city_list_select">
-          <!--<view bindchange="bindPickerChange" value="{{index}}" range="{{array}}">{{array[index]}}</view>-->
-          <!-- 省市区 -->
-          <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" class="flex33">
-            <view>
-              {{array[index]}}
-            </view>
-          </picker>
-          <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" class="flex33">
-            <view>
-              {{array[index]}}
-            </view>
-          </picker>
-          <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" class="flex33">
-            <view>
-              {{array[index]}}
-            </view>
-          </picker>
+        <!-- 选择地区 -->
+        <view class="city_list">
+          <view class="city_list_name">选择地区:</view>
+          <view class="city_list_select">
+            <!--<view bindchange="bindPickerChange" value="{{index}}" range="{{array}}">{{array[index]}}</view>-->
+            <!-- 省市区 -->
+            <picker bindchange="bindPickerChange1" value="{{shenIndex}}" range="{{adr.s1}}" range-key="province_name" class="flex33" name="province_id" bindtap="s1">
+              <view>
+                省:{{adr.s1[shenIndex].province_name}}
+              </view>
+            </picker>
+            <picker bindchange="bindPickerChange2" value="shiIndex" range="{{adr.s2}}" range-key="city_name" class="flex33" name="city_id" bindtap="s2" data-index="{{index}}">
+              <view>
+                市:{{adr.s2[shiIndex].city_name}}
+              </view>
+            </picker>
+            <picker bindchange="bindPickerChange3" value="0" range="{{adr.s3}}" range-key="province_name" class="flex33" name="area_id" bindtap="s3">
+              <view>
+                区:{{adr.s3[0].province_name}}
+              </view>
+            </picker>
+          </view>
         </view>
-      </view>
 
 
-      <view class="city_list">
-        <view class="city_list_name">详细地址:</view>
-        <view class="city_list_inp">
-          <input placeholder="手机号码" />
+        <view class="city_list">
+          <view class="city_list_name">详细地址:</view>
+          <view class="city_list_inp">
+            <input placeholder="手机号码" name="address" value="{{adrDataAjax.address}}"/>
+          </view>
         </view>
-      </view>
 
 
-      <view class="city_list">
-        <view class="city_list_name">邮政编码:</view>
-        <view class="city_list_inp">
-          <input placeholder="手机号码" />
+        <view class="city_list">
+          <view class="city_list_name">邮政编码:</view>
+          <view class="city_list_inp">
+            <input placeholder="手机号码" name="zip" value="{{adrDataAjax.zip}}" />
+          </view>
         </view>
-      </view>
 
-    </view>
-    <view class="city_btns">
-      <button>确定</button>
-      <button bindtap="alert_good">取消</button>
-    </view>
+      </view>
+      <view class="city_btns">
+        <button formType="submit">确定</button>
+        <button formType="reset" bindtap="alert_good">取消</button>
+      </view>
+    </form>
   </view>
 </view>

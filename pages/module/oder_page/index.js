@@ -66,6 +66,9 @@ Page({
           "Content-Type": "application/x-www-form-urlencoded"
         },
         success: function(res) {
+          // 收货地址
+          _this.data.data.address_id = res.data.user_address.address_id;
+          // 所有数据
           _this.setData({
             allData: res.data
           })
@@ -108,6 +111,9 @@ Page({
           "Content-Type": "application/x-www-form-urlencoded"
         },
         success: function(res) {
+          // 收货地址
+          _this.data.data.address_id = res.data.user_address.address_id;
+          // 所有信息
           _this.setData({
             allData: res.data
           })
@@ -358,5 +364,9 @@ Page({
     var value = e.detail.value;
     //留言
     this.data.data.message = value;
+  },
+  isAdr(){
+    // 判断是否有购物地址
+    
   }
 })

@@ -10,6 +10,22 @@ Page({
     array: ['美国', '中国', '巴西', '日本'],
     index: 1,
     is_alert: false,//弹出框
+    setAdr: {
+
+    },
+    adrDataAjax: {
+      debug_user: util.debug_user,
+      name: "stone",
+      mobile: "18583671750",
+      address: "四川省",
+      zip: "610000",
+      province_id: "110000",
+      city_id: "110100",
+      area_id: "110101",
+      address_id: ``
+    },
+    address_id: "",
+    is_set: false,
   },
 
   /**
@@ -91,10 +107,15 @@ Page({
       index: e.detail.value
     })
   },
-  alert_good() {
+  alert_good(e) {
     this.setData({
       is_alert: !this.data.is_alert
-    })
+    });
+    //获取地址id  如果是修改地址进来
+    if (e.currentTarget.dataset.address_id) {
+      this.data.address_id = e.currentTarget.dataset.address_id;
+      this.data.is_set = true;
+    }
   },
   delect(e) {
     console.log(e)
@@ -112,7 +133,7 @@ Page({
             url: util.adr_delect,
             data: {
               debug_user: util.debug_user,
-              address_id:id
+              address_id: id
             },
             header: {
               "Content-Type": "application/x-www-form-urlencoded"
@@ -126,9 +147,9 @@ Page({
                 title: '删除成功',
                 icon: 'success',
                 duration: 1000,
-                success(){
+                success() {
                   wx.reLaunch({
-                    url:"index"
+                    url: "index"
                   })
                 }
               })
@@ -141,5 +162,71 @@ Page({
         }
       }
     })
+  },
+  formSubmit(e) {
+    var _this = this;
+    var obj = e.detail.value;
+    this.data.adrDataAjax.address_id = this.data.address_id;
+    //如果是点击修改进来提交
+    if (this.data.is_set) {
+      wx.request({
+        url: util.set_adr,
+        data: this.data.adrDataAjax,
+        header: { "Content-Type": "application/x-www-form-urlencoded" },
+        method: 'POST',
+        success: function (res) {
+          console.log(res.data);
+          // 修改成功
+          if (res.data.status == 1) {
+            wx.showToast({
+              title: '修改成功',
+              icon: 'success',
+              duration: 1000,
+              success() {
+                //关闭模态框
+                _this.setData({
+                  is_alert: !_this.data.is_alert,
+                  is_set: false
+                });
+              }
+            });
+          }
+        },
+        fail: function (res) { },
+        complete: function (res) { },
+      })
+    }else{
+      // 添加地址
+      wx.request({
+        url: util.add_adr,
+        data: this.data.adrDataAjax,
+        header: { "Content-Type": "application/x-www-form-urlencoded" },
+        method: 'POST',
+        success: function (res) {
+          console.log(res.data);
+          // 修改成功
+          if (res.data.status == 1) {
+            wx.showToast({
+              title: '修改成功',
+              icon: 'success',
+              duration: 1000,
+              success() {
+                //关闭模态框
+                _this.setData({
+                  is_alert: !_this.data.is_alert,
+                  is_set: false
+                });
+                // 重新加载
+                wx.reLaunch({
+                  url: "index"
+                })
+              }
+            });
+          }
+        },
+        fail: function (res) { },
+        complete: function (res) { },
+      })
+    }
   }
 })

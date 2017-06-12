@@ -21,6 +21,14 @@
     padding-left: 20rpx;
     position: relative;
 }
+.over_header .oder_fill_adr1{
+	border: rgb(233, 233, 233) solid 2rpx;
+    border-width: 2rpx 0;
+    line-height:46rpx;
+    background: rgb(255, 255, 255);
+    padding-left: 20rpx;
+    position: relative;
+}
 .over_header .oder_fill_adr text{
 	display: inline-block;
     height: 98rpx;
