@@ -249,7 +249,7 @@ Page({
   },
   headList(e) {
     // 当前点击索引
-
+    this.data.allData.p = 1;
     let index = e.target.dataset.num;
     let sort = e.target.dataset.sort;
     this.setData({

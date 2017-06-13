@@ -1,6 +1,6 @@
 // pages/module/index/index.js
 let util = require('../../../config.js');
-var app = getApp()
+var app = getApp();
 Page({
 
   /**
@@ -9,7 +9,9 @@ Page({
   data: {
     index_head: true,
     datas: [{}, {}, {}, {}],
-    item: []
+    item: [],
+    title:{},
+    host:util.host
   },
 
   /**
@@ -17,18 +19,18 @@ Page({
    */
   onLoad: function(options) {
     // option id 
-    console.log(app.getOpentId())
     var _this = this;
     wx.request({
       url: util.diy,
       data: {
-        id: util.debug_user,
+        id:"6",
       },
       method: 'GET',
       dataType: 'json',
       success: function(res) {
-        _this.setData({
-          item: res.data.LModules
+        var datas = res.data.data.LModules;
+        _this.setData({ 
+          items: datas
         })
       }
     })

@@ -1,18 +1,18 @@
 <template name="2">
-  <view class="shopping_list_style2 shop_items box_view">
-    <view class="shop_item" wx:for="{{datas}}">
-      <navigator url="">
-        <view class="shop_item_image">
-          <image src=""></image>
-        </view>
-        <view class="shop_item_box">
-          <view class="shop_item_title">123</view>
-          <view class="shop_item_price">
-            <view>￥{{item.price}}</view>
-            <view>￥123</view>
+<view class="shopping_list_style2 shop_items box_view">
+      <view class="shop_item" wx:for="{{datas.content.goodslist}}" wx:key="index">
+        <navigator url="../goods_details/index?item_id={{item.item_id}}">
+          <view class="shop_item_image">
+            <image src="{{item.file_path}}"></image>
           </view>
-        </view>
-      </navigator>
+          <view class="shop_item_box">
+            <view class="shop_item_title">{{item.title}}</view>
+            <view class="shop_item_price">
+              <view>{{item.price}}</view>
+              <view></view>
+            </view>
+          </view>
+        </navigator>
+      </view>
     </view>
-  </view>
 </template>

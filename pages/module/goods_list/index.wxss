@@ -67,10 +67,13 @@
     background: rgb(249, 249, 249);
 }
 .shop_items{
-	
+	position: relative
 }
 .shopping_list_style1{
-
+  position:relative
+}
+.shop_item{
+  position:relative
 }
 .shopping_list_style1 .shop_item{
 	display: inline-block;
