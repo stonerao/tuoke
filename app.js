@@ -37,6 +37,7 @@ App({
       //调用登录接口
       wx.login({
         success: function(loginCode) {
+          console.log(loginCode)
           var appid = 'wx636cc18048f2e7c1'; //填写微信小程序appid  
           var secret = '6f7ac4b16b57f43ad366a6deb232b983'; //填写微信小程序secret  
             //调用request请求api转换登录凭证  
@@ -47,6 +48,7 @@ App({
             },
             success: function(res) {
               data = res;
+              console.log(res)
             }
           })
         }
