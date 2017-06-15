@@ -7,7 +7,6 @@ Page({
    */
   data: {
     adrData: [],
-    array: ['美国', '中国', '巴西', '日本'],
     index: 1,
     is_alert: false,//弹出框
     setAdr: {
@@ -15,17 +14,24 @@ Page({
     },
     adrDataAjax: {
       debug_user: util.debug_user,
-      name: "stone",
-      mobile: "18583671750",
-      address: "四川省",
-      zip: "610000",
-      province_id: "110000",
-      city_id: "110100",
-      area_id: "110101",
+      name: "",
+      mobile: "",
+      address: "",
+      zip: "",
+      province_id: "",
+      city_id: "",
+      area_id: "",
       address_id: ``
     },
     address_id: "",
     is_set: false,
+    setAdr:"",
+    adr: {
+      s1: [],
+      s2: [],
+      s3: []
+    },
+    shenIndex:0
   },
 
   /**
@@ -51,6 +57,27 @@ Page({
       fail: function (res) { },
       complete: function (res) { },
     })
+
+    // 加载省地址
+    var _this = this;
+    wx.request({
+      method: "POST",
+      url: util.adr.s1, // 立即购买
+      data: '',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      success: function (res) {
+
+        // get
+        _this.data.adr.s1 = res.data.data;
+        //updata
+        _this.setData({
+          adr: _this.data.adr
+        })
+      }
+    })
+
   },
 
   /**
@@ -102,9 +129,59 @@ Page({
 
   },
   bindPickerChange: function (e) {
-    console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index: e.detail.value
+    })
+  }, bindPickerChange1(e) {
+    this.setData({
+      shenId: this.data.adr.s1[e.detail.value].province_id,
+      shenIndex: e.detail.value
+    })
+    var _this = this;
+    wx.request({
+      method: "POST",
+      url: util.adr.s2, // 立即购买
+      data: {
+        province_id: _this.data.shenId
+      },
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      success: function (res) {
+        // get
+        _this.data.adr.s2 = res.data.data;
+        //updata
+        _this.setData({
+          adr: _this.data.adr
+        })
+      }
+    })
+  },
+  bindPickerChange2: function (e) {
+    this.setData({
+      shiId: this.data.adr.s2[e.detail.value].city_id,
+      shiIndex: e.detail.value
+    })
+    // 获取判断是什么
+    var _this = this;
+    wx.request({
+      url: util.adr.s3, // 立即购买
+      method: "POST",
+      data: {
+        city_id: _this.data.shiId
+      },
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      success: function (res) {
+
+        // get
+        _this.data.adr.s3 = res.data.data;
+        //updata
+        _this.setData({
+          adr: _this.data.adr
+        })
+      }
     })
   },
   alert_good(e) {
@@ -118,7 +195,6 @@ Page({
     }
   },
   delect(e) {
-    console.log(e)
     var id = e.target.dataset.id
     var _this = this;
     // 点击删除当前地址
@@ -158,7 +234,6 @@ Page({
           })
         } else if (res.cancel) {
           //取消
-          console.log('用户点击取消')
         }
       }
     })
@@ -166,16 +241,19 @@ Page({
   formSubmit(e) {
     var _this = this;
     var obj = e.detail.value;
+    for (var key in obj){
+      this.data.adrDataAjax[key]=obj[key]
+    }
     this.data.adrDataAjax.address_id = this.data.address_id;
     //如果是点击修改进来提交
     if (this.data.is_set) {
+      var adr = this.data.adrDataAjax;
       wx.request({
         url: util.set_adr,
         data: this.data.adrDataAjax,
         header: { "Content-Type": "application/x-www-form-urlencoded" },
         method: 'POST',
-        success: function (res) {
-          console.log(res.data);
+        success: function (res) { 
           // 修改成功
           if (res.data.status == 1) {
             wx.showToast({
@@ -203,7 +281,6 @@ Page({
         header: { "Content-Type": "application/x-www-form-urlencoded" },
         method: 'POST',
         success: function (res) {
-          console.log(res.data);
           // 修改成功
           if (res.data.status == 1) {
             wx.showToast({
@@ -228,5 +305,6 @@ Page({
         complete: function (res) { },
       })
     }
-  }
+  },
+   
 })

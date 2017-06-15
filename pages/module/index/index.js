@@ -23,7 +23,7 @@ Page({
     wx.request({
       url: util.diy,
       data: {
-        id:"6",
+        id:util.index_id,
       },
       method: 'GET',
       dataType: 'json',

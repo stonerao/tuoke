@@ -29,6 +29,7 @@ Page({
       price: "",
     }, //点击购物车信息
     shopData: {}, //確認后的商品規格
+    item_id:``,
   },
 
   /**
@@ -37,11 +38,11 @@ Page({
   onLoad: function (options) {
     var _this = this;
     console.log(options);
+    this.data.item_id = options.goods_id
     wx.request({
       url: util.goods_details, // 
       data: {
-        mime: `json`,
-        sid: `1493708646`,
+        sid:util.sid,
         id: options.goods_id,
         did: ``
       },
@@ -280,7 +281,7 @@ Page({
       method: "POST",
       url: util.buy_sub, // 立即购买
       data: {
-        goods_id: `34`,
+        goods_id: this.data.shopData.goods_id ? this.data.shopData.goods_id : this.data.cartActiveData.goodsId,
         id: `34`, //true 商品id
         num: '1', //true 
         sku_id: `63`, //false
@@ -294,7 +295,7 @@ Page({
         //立即购买第二步
 
         var data = res.data.data
-        data['debug_user'] = "169";
+        data['debug_user'] = util.debug_user;
         console.log(JSON.stringify(data))
         wx.navigateTo({
           url: `../oder_page/index?class=2&obj=${JSON.stringify(data)}`

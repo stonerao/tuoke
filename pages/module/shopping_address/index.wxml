@@ -23,7 +23,7 @@
            <image src="../../assets/images/icon-check-0.png" class="city_icon mor_icon"></image> 设置默认地址
           </view>
           <view class="adr_item_icon">
-            <image src="../../assets/images/set.png" class="city_icon" bindtap="alert_good" data-address_id="{{item.address_id}}"></image>
+            <image src="../../assets/images/set.png" class="city_icon" bindtap="alert_good" data-address_id="{{item.address_id}}" data-text="set"></image>
             <image src="../../assets/images/delect.png" class="city_icon" bindtap="delect" data-id='{{item.address_id}}'></image>
           </view>
         </view>
@@ -45,14 +45,14 @@
       <view>您还没有添加收货地址</view>
     </view>
   <!--模态框-->
- <view class="city_alert" wx:if="{{is_alert}}">
-    <form bindsubmit="formSubmit" bindreset="formReset">
+ <view class="city_alert" wx:if="{{is_alert}}" >
+    <form bindsubmit="formSubmit" bindreset="formReset" data-id="1">
       <view class="city_list_box">
 
         <view class="city_list">
           <view class="city_list_name">收件人:</view>
           <view class="city_list_inp">
-            <input placeholder="收件人" name="name" value="{{adrDataAjax.name}}" bindinput="setVal"/>
+            <input placeholder="收件人" name="name" value="{{adrDataAjax.name}}" />
           </view>
         </view>
         <view class="city_list">
@@ -69,17 +69,20 @@
             <!-- 省市区 -->
             <picker bindchange="bindPickerChange1" value="{{shenIndex}}" range="{{adr.s1}}" range-key="province_name" class="flex33" name="province_id" bindtap="s1">
               <view>
-                省:{{adr.s1[shenIndex].province_name}}
+              <input  name="province_id" value="{{adr.s1[shenIndex].province_id}}" hidden="true"/>
+                省:{{adr.s1[0].province_name}}
               </view>
             </picker>
-            <picker bindchange="bindPickerChange2" value="shiIndex" range="{{adr.s2}}" range-key="city_name" class="flex33" name="city_id" bindtap="s2" data-index="{{index}}">
+            <picker bindchange="bindPickerChange2" value="{{shenIndex}}" range="{{adr.s2}}" range-key="city_name" class="flex33" name="city_id" bindtap="s2" data-index="{{index}}">
               <view>
-                市:{{adr.s2[shiIndex].city_name}}
+              <input  name="city_id" value="{{adr.s2[shenIndex].city_id}}" hidden="true"/>
+                市:{{adr.s2[0].city_name}}
               </view>
             </picker>
-            <picker bindchange="bindPickerChange3" value="0" range="{{adr.s3}}" range-key="province_name" class="flex33" name="area_id" bindtap="s3">
+            <picker bindchange="bindPickerChange3" value="{{shenIndex}}" range="{{adr.s3}}" range-key="area_name" class="flex33" name="area_id" bindtap="s3">
               <view>
-                区:{{adr.s3[0].province_name}}
+              <input  name="area_id" value="{{adr.s3[shenIndex].area_id}}" hidden="true"/>
+                区:{{adr.s3[0].area_name}}
               </view>
             </picker>
           </view>

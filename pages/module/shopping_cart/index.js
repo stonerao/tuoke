@@ -100,7 +100,7 @@ Page({
     wx.request({
       url: util.Order_delect, //仅为示例，并非真实的接口地址
       data: {
-        debug_user: "169",
+        debug_user:util.debug_user,
         id: _this.data.thisCheckBox
       },
       header: {
@@ -117,15 +117,21 @@ Page({
   },
   checkbox_items(e) {
     //点击选择
-    //保存
     console.log(e)
+    //保存 
     this.setData({
       thisCheckBox: e.detail.value
     })
-    
+    if (e.detail.value.length==this.data.items.length){
+      this.setData({
+        isAll:true
+      })
+    }else{
+      this.setData({
+        isAll: false
+      })
+    }
     this.priceChange();
-    console.log(e.detail.value)
-   
   },
   selectTap(option) {
   },
@@ -168,8 +174,8 @@ Page({
     }
     
 
-    price = parseFloat(price).toFixed(2);
-    console.log(this.data.items[key].cheked)
+    price = parseFloat(price).toFixed(2); 
+    console.log(this.data.price,1)
     this.setData({
       price: price
     })
@@ -184,6 +190,9 @@ Page({
     
   },
   list(e){
-    console.log(e)
+    console.log(e);
+    let num = e.target.dataset.sort;
+    this.data.items[num].cheked = !this.data.items[num].cheked
+    this.priceChange();
   }
 })

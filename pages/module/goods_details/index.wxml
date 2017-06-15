@@ -114,6 +114,6 @@
   </view>
 
 <view id="goods_footer">
-  <view class="goods_footer_sub btn btn-white" bindtap="go_shop">立即购买</view>
+  <!--<view class="goods_footer_sub btn btn-white" bindtap="go_shop">立即购买</view>-->
   <view class="goods_footer_cart btn btn-orange-dark" bindtap="cartTap" data-sid="1493708646" data-goods_id="{{goods.item_id}}" data-img="{{goods.front_path}}" data-name="{{goods.title}}" data-price="{{goods.price}}">加入购物车</view>
 </view>

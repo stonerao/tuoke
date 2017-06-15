@@ -118,6 +118,7 @@
 }
 .text_content{
 	padding:20rpx;
+  background:#fff;
 }
 .text_content image{
 	max-width:100%;

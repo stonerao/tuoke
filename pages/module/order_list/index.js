@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    list: ['全部', '代付款', '待发货', '待收货', '待评价', '待换货', '待拼团'],
+    list: ['全部','代付款', '待发货', '待收货', '待评价', '待换货', '待拼团'],
     listActive: 0,
     page: 1,
     datas: []
@@ -17,10 +17,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    console.log(options)
     this.setData({
-      listActive: (options.active-1)
+      listActive: options.active!=''?options.active:''
     })
+    console.log(this.data.listActive)
     this.ajaxData();
   },
 
@@ -85,16 +86,8 @@ Page({
     });
     this.setData({
       datas:[]
-    })
-    // 判断当前点击位置
-    console.log(index)
-    switch (index) {
-      case 0:
-        break;
-        ;
-      default:
-        ;
-    }
+    }) 
+    
     this.ajaxData();
   },
   ajaxData() {
@@ -107,7 +100,7 @@ Page({
       url: _this.data.listActive != 3 ? util.order_list : util.comment_list,
       data: {
         debug_user: util.debug_user,
-        type: index,
+        type: index==0?'':parseInt(index)-1,
         p: this.data.page
       },
       // header: { "Content-Type": "application/x-www-form-urlencoded" },

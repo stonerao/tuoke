@@ -399,16 +399,17 @@ Page({
     //立即购买
     // ajax请求
     let _this = this;
+    console.log(option)
     // 列表数据
     wx.request({
       method: "POST",
       url: util.buy_sub, // 立即购买
       data: {
-        goods_id: `34`,
-        id: `34`, //true 商品id
+        goods_id: this.data.shopData.goods_id ? this.data.shopData.goods_id : this.data.cartActiveData.goodsId,
+        id: `63`, //true 商品id
         num: _this.data.cartVal, //true 
-        sku_id: `63`, //false
-        t: `1`, //false，
+        sku_id: `63`, //false，
+        t: '1', //false
         debug_user: util.debug_user
       },
       header: {

@@ -18,7 +18,7 @@
           <view class="shop_item">
             <!--checkbox-->
             <view class="shop_item_check">
-              <checkbox value="{{item.cart_id}}/{{item.num}}" checked="{{item.cheked}}" class="chec" data-num="{{item.num}}" name="checkbox"/>
+              <checkbox value="{{item.cart_id}}/{{item.num}}" checked="{{item.cheked}}" class="chec" data-num="{{item.num}}" name="checkbox" data-price="{{item.price2?item.price2:item.price}}" data-sort="{{$index}}"/>
             </view>
             <view class="shop_item_img">
               <image src="{{item.front_path}}"></image>

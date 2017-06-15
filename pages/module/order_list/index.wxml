@@ -14,6 +14,7 @@
       <view class="list_head_item" data-num="4">
         待收款
       </view>-->
+      
       <view class="list_head_item {{listActive==$index?'active':''}}" bindtap="headList" data-num="{{$index}}" wx:for="{{list}}" wx:for-index="$index" wx:key="{{$index}}">
         {{item}}
       </view>

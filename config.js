@@ -4,6 +4,7 @@ let config = {
   host,
   debug_user:'169',
   ischeckin:`1`,//用戶ID
+  index_id:`6`,//diyid
   sid:`1493708646`,//sid
   goods_list: `http://wfx.dev.kh888.cn/index.php?m=Shop&c=Item&a=lists${sid}`,//商品列表
   add_cart: `http://wfx.dev.kh888.cn/index.php?m=Shop&c=Item&a=get_sku_list${sid}`,//添加购物车规格
