@@ -25,19 +25,23 @@ Page({
     },
     address_id: "",
     is_set: false,
-    setAdr:"",
+    setAdr: "",
     adr: {
       s1: [],
       s2: [],
       s3: []
     },
-    shenIndex:0
+    shenIndex: 0,
+    setPageInfo: false,//设置是否是选择地址过来
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    if (options['adr'] != '') {
+      this.data.setPageInfo = true;
+    }
     // 请求地址列表
     var _this = this;
     wx.request({
@@ -241,8 +245,8 @@ Page({
   formSubmit(e) {
     var _this = this;
     var obj = e.detail.value;
-    for (var key in obj){
-      this.data.adrDataAjax[key]=obj[key]
+    for (var key in obj) {
+      this.data.adrDataAjax[key] = obj[key]
     }
     this.data.adrDataAjax.address_id = this.data.address_id;
     //如果是点击修改进来提交
@@ -253,7 +257,7 @@ Page({
         data: this.data.adrDataAjax,
         header: { "Content-Type": "application/x-www-form-urlencoded" },
         method: 'POST',
-        success: function (res) { 
+        success: function (res) {
           // 修改成功
           if (res.data.status == 1) {
             wx.showToast({
@@ -273,7 +277,7 @@ Page({
         fail: function (res) { },
         complete: function (res) { },
       })
-    }else{
+    } else {
       // 添加地址
       wx.request({
         url: util.add_adr,
@@ -306,5 +310,17 @@ Page({
       })
     }
   },
-   
+  checkAdr(e) {
+    //  判断是否是下单过来
+    var id = e.target.dataset.id
+    if (this.data.setPageInfo) {
+      wx.setStorage({
+        key: "address_id",
+        data: id
+      })
+      wx.navigateBack({
+        delta: 1
+      })
+    }
+  }
 })

@@ -22,18 +22,18 @@
           <view class="adr_item_name">
            <image src="../../assets/images/icon-check-0.png" class="city_icon mor_icon"></image> 设置默认地址
           </view>
-          <view class="adr_item_icon">
+          <view class="adr_item_icon"  data-id='{{item.address_id}}'>
             <image src="../../assets/images/set.png" class="city_icon" bindtap="alert_good" data-address_id="{{item.address_id}}" data-text="set"></image>
             <image src="../../assets/images/delect.png" class="city_icon" bindtap="delect" data-id='{{item.address_id}}'></image>
           </view>
         </view>
 
-        <view class="adr_item_info">
+        <view class="adr_item_info" bindtap="checkAdr" data-id='{{item.address_id}}'>
           <image src="../../assets/images/adr.png" class="city_icon adr_icons"></image>
           <text>{{item.name}}</text>
           <text>{{item.mobile}}</text>
         </view>
-        <view class="adr_item_city">
+        <view class="adr_item_city" bindtap="checkAdr" data-id='{{item.address_id}}'>
           地址：{{item.address}}
         </view>
       </view>

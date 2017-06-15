@@ -39,12 +39,13 @@ Page({
       total_price: ``,
       current_price: ``,
       payment: ``,
-      address_id: `10`,
+      address_id: ``,
       postfee: ``,
       message: ``,
       cart_ids: ``,
       code: `0`
     }, //提交訂單所有信息
+    address_id:``,//本地地址
   },
 
   /**
@@ -339,7 +340,15 @@ Page({
    
   },
   subOrder() {
+    // 获取存储有地址id 
+   
+    this.data.address_id = wx.getStorageSync('address_id')
     //  提交订单
+    console.log(this.data.address_id)
+    if (this.data.address_id){
+      this.data.data['address_id'] = this.data.address_id;
+    }
+    console.log(this.data.data['address_id'])
     var _this = this;
     wx.request({
       method: "POST",
@@ -356,6 +365,13 @@ Page({
             duration: 500,
             success() {
               console.log(1)
+              // 清楚地址id
+              wx.removeStorage({
+                key: 'address_id',
+                success: function (res) {
+                  console.log(res.data)
+                }
+              })
               wx.reLaunch({
                 url: `../member/index`
               })
@@ -383,7 +399,7 @@ Page({
   eyeAdr(){
     // 去地址
     wx.navigateTo({
-      url: '../shopping_address/index',
+      url: `../shopping_address/index?adr=page`,
     })
   }
 })
