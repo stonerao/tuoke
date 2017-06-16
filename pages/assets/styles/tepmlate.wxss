@@ -131,7 +131,7 @@
 /*3 swiper*/
 .tp_swiper1{
   width:100%;
-  height:200rpx;
+  height:300rpx;
 }
 .diy-banner{
     width:100%;
