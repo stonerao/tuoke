@@ -38,8 +38,8 @@ App({
       wx.login({
         success: function(loginCode) {
           console.log(loginCode)
-          var appid = 'wx636cc18048f2e7c1'; //填写微信小程序appid  
-          var secret = '6f7ac4b16b57f43ad366a6deb232b983'; //填写微信小程序secret  
+          var appid = 'wx518d1bc86e7eee08'; //填写微信小程序appid  
+          var secret = '3e1d33880657159f0736dd2a322dfa79'; //填写微信小程序secret  
             //调用request请求api转换登录凭证  
           wx.request({
             url: 'https://api.weixin.qq.com/sns/jscode2session?appid=‘+<code></code>appid+’&secret=‘+secret+’&grant_type=authorization_code&js_code=' + loginCode.code,
