@@ -28,6 +28,7 @@ Page({
       method: 'GET',
       dataType: 'json',
       success: function(res) {
+        console.log(res)
         var datas = res.data.data.LModules;
         _this.setData({ 
           items: datas

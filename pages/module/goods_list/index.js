@@ -43,7 +43,7 @@ Page({
       price: "",
     }, //点击购物车信息
     shopData: {}, //確認后的商品規格
-
+    test:``
   },
 
   /**
@@ -66,7 +66,7 @@ Page({
         _this.setData({
           items: res.data.data
         })
-        console.log(_this.data.items)
+        
       }
     })
 

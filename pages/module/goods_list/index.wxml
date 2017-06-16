@@ -8,7 +8,7 @@
         <image src="../../assets/images/hui3.png" class="icon-search"></image>
       </view>
     </view>
-  </view>
+  </view> 
   <view class="goods_list_title">
     <view class="goods_list_items">
       <view class="goods_list_item">

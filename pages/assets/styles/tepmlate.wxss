@@ -18,11 +18,15 @@
     background: rgb(255, 255, 255);
     position: relative;
 }
+.shopping_list_style1 .shop_item navigator{
+  width:100%;
+}
 .shopping_list_style1 .shop_item .shop_item_image{
 	width: 100%;
     min-height: 280rpx;
     height: auto;
     border-radius: 0;
+    float:left;
 }
 .shopping_list_style1 .shop_item .shop_item_image image{
 	width:100%;
