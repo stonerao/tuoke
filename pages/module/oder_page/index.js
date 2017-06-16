@@ -68,6 +68,7 @@ Page({
         },
         success: function(res) {
           // 收货地址
+          
           _this.data.data.address_id = res.data.user_address.address_id;
           // 所有数据
           _this.setData({
@@ -113,7 +114,22 @@ Page({
         },
         success: function(res) {
           // 收货地址
+          if (res.data.status==0){
+            wx.showToast({
+              title: res.data.info,
+              icon: 'success',
+              duration: 2000,
+              success(){
+                wx.navigateBack({
+                  delta: 1
+                })
+              }
+            })
+          }
+          if (res.data.user_address.address_id){
+
           _this.data.data.address_id = res.data.user_address.address_id;
+          }
           // 所有信息
           _this.setData({
             allData: res.data

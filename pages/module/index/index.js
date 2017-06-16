@@ -19,6 +19,18 @@ Page({
    */
   onLoad: function(options) {
     // option id 
+
+    app.getOpentId(util.getLogin,util.sid)
+
+
+
+
+
+
+
+
+
+
     var _this = this;
     wx.request({
       url: util.diy,
