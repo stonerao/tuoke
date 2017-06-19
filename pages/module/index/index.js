@@ -22,15 +22,8 @@ Page({
 
     app.getOpentId2(util.getLogin,util.sid)
 
-
-
-
-
-
-
-
-
-
+    console.log("请求DIY:" + util.diy);
+    console.log("请求DIY.index_id:" + util.index_id);
     var _this = this;
     wx.request({
       url: util.diy,
