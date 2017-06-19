@@ -59,7 +59,7 @@
       </view>
       <view class="text_content" >
         <!-- 内容 -->
-        <!--{{goods.content}}-->
+        {{goods.detail}}
       </view>
        
     </view>
