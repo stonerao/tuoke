@@ -9,7 +9,7 @@
 	display:flex;
 	justify-content:space-between;
 	padding:10rpx 20rpx;
-	background:#fff;z
+	background:#fff;
 }
 .shop_main{
 	background:#fff;

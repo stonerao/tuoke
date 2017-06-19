@@ -15,7 +15,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "拓客教育",
+    "navigationBarTitleText": "拓客小程序演示",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
