@@ -63,11 +63,18 @@ App({
               //that.globalData.userInfo = res2.userInfo
               //typeof cb == "function" && cb(that.globalData.userInfo)
               var username = res2.userInfo.nickName
+              var province = res2.userInfo.province
+              var city = res2.userInfo.city
               var img = res2.userInfo.avatarUrl
               // 请求自己的服务器  
               console.log("code=" + code);
               console.log("username=" + username);
               console.log("img=" + img);
+
+              wx.showModal({
+                title: '欢迎您',
+                content: '' + username
+              })
               //Login(code, username, img);
             }
           })
@@ -98,39 +105,6 @@ App({
       })
     }).then((data) => {
       console.log(data)
-      // 调用登录接口  
-      wx.login({
-        // login流程  
-        success: function (res) {
-          console.log(res)
-          //登录成功  
-          if (res.code) {
-            // 这里是用户的授权信息每次都不一样  
-            var code = res.code;
-            wx.getUserInfo({
-              // getUserInfo流程  
-              success: function (res2) {
-                console.log(res2)
-                that.globalData.userInfo = res2.userInfo
-                //typeof cb == "function" && cb(that.globalData.userInfo)
-                var username = res2.userInfo.nickName
-                var img = res2.userInfo.avatarUrl
-                // 请求自己的服务器  
-                console.log("code=" + code);
-                console.log("username=" + username);
-                console.log("img=" + img);
-                //Login(code, username, img);
-              }
-            })
-          } else {
-            wx.showModal({
-              title: '提示',
-              content: '获取用户登录态失败！' + res.errMsg
-            })
-          }
-        }
-      })
-      /*
       wx.login({
         success: function (loginCode) {
           var appid = data.appid; //填写微信小程序appid  
@@ -150,8 +124,6 @@ App({
           })
         }
       })
-      */
-
     })
 
     // wx.request({
