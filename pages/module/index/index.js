@@ -21,14 +21,7 @@ Page({
     // option id 
 
     app.getOpentId2(util.getLogin,util.sid)
-
-
-
-
-
-
-
-
+    // app.getOpentId(util.getLogin,util.sid)
 
 
     var _this = this;

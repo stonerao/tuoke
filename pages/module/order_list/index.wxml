@@ -41,15 +41,15 @@
             </view>
           </view>
           <view class="list_item_price">
-            共意见商品 合计：
+            共{{item.quantity}}件商品 合计：
             <text class="list_index_color">￥{{item.order_amount}}</text>（含运费￥0.00）
           </view>
           <!--<view class="list_item_num text-center">
             共查看全部5件商品
           </view>-->
           <view class="list_item_btns">
-            <view class="list_item_quit" bindtap="quit_order">取消订单</view>
-            <view class="list_item_sub">立即付款</view>
+            <view class="list_item_quit" bindtap="quit_order"  wx:if="{{item.status==0||item.status==1||item.status==2?true:false}}">取消订单</view>
+            <view class="list_item_sub" wx:if="{{item.status==0?true:false}}">立即付款</view>
           </view>
         </view>
       </view>

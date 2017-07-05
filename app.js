@@ -56,6 +56,7 @@ App({
         if (res.code) {
           // 这里是用户的授权信息每次都不一样  
           var code = res.code;
+          console.log(res.code)
           wx.getUserInfo({
             // getUserInfo流程  
             success: function (res2) {
@@ -104,9 +105,10 @@ App({
         complete: function (res) { },
       })
     }).then((data) => {
-      console.log(data)
+      console.log(data,`id`)
       wx.login({
         success: function (loginCode) {
+          console.log(loginCode)
           var appid = data.appid; //填写微信小程序appid  
           var secret = data.appsecret; //填写微信小程序secret  
 
@@ -119,7 +121,7 @@ App({
             },
             success: function (res) {
               console.log(res);
-              console.log(res.data.openid) //获取openid  
+              console.log(res.data.openid,`id`) //获取openid  
             }
           })
         }

@@ -102,7 +102,7 @@
         <view class="city_list">
           <view class="city_list_name">详细地址:</view>
           <view class="city_list_inp">
-            <input placeholder="手机号码" name="address" value="{{adrData.address}}"/>
+            <input placeholder="详细地址" name="address" value="{{adrData.address}}"/>
           </view>
         </view>
 
@@ -110,7 +110,7 @@
         <view class="city_list">
           <view class="city_list_name">邮政编码:</view>
           <view class="city_list_inp">
-            <input placeholder="手机号码" name="zip" value="{{adrData.zip}}" />
+            <input placeholder="邮政编码" name="zip" value="{{adrData.zip}}" />
           </view>
         </view>
 

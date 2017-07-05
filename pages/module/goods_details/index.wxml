@@ -57,9 +57,12 @@
         <view   data-active="1">图文详情</view>
         <!--<view class="{{active==2?'active':''}}" data-active="2">商品评价</view>-->
       </view>
-      <view class="text_content" >
-        <!-- 内容 -->
-        {{goods.detail}}
+      <view class="text_content">
+         
+        <template name="aa" >
+        {{data}}
+        </template>
+        <template is="aa" data="{{data:goods.detail}}"/>
       </view>
        
     </view>

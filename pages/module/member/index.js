@@ -29,7 +29,7 @@ Page({
     }],
     check: [
       { name: "地址管理", img: "../../assets/images/08.png", url: "../shopping_address/index" },
-      { name: "購物車", img: "../../assets/images/08.png", url: "../shopping_cart/index" }
+      { name: "购物车", img: "../../assets/images/08.png", url: "../shopping_cart/index" }
     ],
     memberData: {},//会员信息
     orderList: "../order_list/index?active="

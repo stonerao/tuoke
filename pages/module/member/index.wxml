@@ -83,16 +83,7 @@
       </view>
       <!--呆拼团-->
       <!--暂无数据-->
-      <view class="member-static-item">
-        <navigator url="{{orderList}}6" hover-class="none">
-          <view class="member-static-num">
-            {{memberData.orderArr.Tuioder}}
-          </view>
-          <view class="member-static-text">
-            待拼团
-          </view>
-        </navigator>
-      </view>
+       
 
 
     </view>
